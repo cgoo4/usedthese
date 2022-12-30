@@ -1,3 +1,13 @@
+#' Extract & summarise function usage
+#'
+#' @param x A file name -- .R, .Rmd or .qmd
+#'
+#' @return Printed table
+#' @export
+#'
+#' @examples
+#' xxx
+#'
 sift <- \(){
   box <- .packages() |> # Attached packages & functions
     rlang::set_names() |>
