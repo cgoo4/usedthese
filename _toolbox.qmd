@@ -1,0 +1,57 @@
+```{r}
+#| label: toolbox
+#| echo: false
+
+box <- .packages() |> # Attached packages & functions
+  set_names() |> 
+  map(\(x) ls(str_c("package:", x))) |>
+  enframe("pckg", "func") |> 
+  unnest(cols = func)
+
+origin <- tribble( # Keep these where there are conflicts
+  ~Package, ~func,
+  "dplyr", "filter",
+  "tibble", "as_tibble",
+  "tibble", "tibble",
+  "tibble", "tribble",
+  "quanteda", "t"
+)
+
+# Extract code
+
+options(knitr.duplicate.label = "allow")
+
+walk("index.qmd", knitr::purl, quiet = TRUE, documentation = 0)
+
+code_only <- "index.R" |> 
+  read_lines() |> 
+  highr::hi_latex() |> 
+  str_extract_all("(?<=kwd\\{)[a-zA-Z0-9_.]*(?=\\})") |> 
+  unlist() |> 
+  sort()
+
+unlink("index.R")
+
+# Which functions are used in the code?
+
+map2(box$func, box$pckg, \(i, j) {
+    tibble(
+      Package = j,
+      func = i,
+      total = code_only |> str_count(str_c("^\\Q", i, "\\E$")) |> sum()
+    )
+  }) |> 
+  list_rbind() |> 
+  filter(total > 0) |> 
+  mutate(
+    conflict = if_else(func %in% conflicts(), 1, 0),
+    Function = str_c(func, "[", total, "]"),
+    Package = str_remove(Package, "package:")
+  ) |> 
+  arrange(desc(conflict), func) |> 
+  filter(conflict == 0 | str_c(Package, func) %in% 
+           str_c(origin$Package, origin$func)) |> 
+  summarise(Function = str_c(Function, collapse = ";  "), 
+            .by = Package) |> 
+  arrange(Package)
+```
