@@ -4,18 +4,25 @@
 \alias{sift}
 \title{Extract & summarise function usage}
 \usage{
-sift()
+sift(fil)
 }
 \arguments{
-\item{x}{A file name -- .R, .Rmd or .qmd}
+\item{fil}{A file name (.R, .Rmd or .qmd)}
 }
 \value{
-Printed table
+A tibble
 }
 \description{
 Extract & summarise function usage
 }
 \examples{
-xxx
+# Mimics the input of a two-line R script
+sift("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
+#   A tibble: 1 × 2
+#   Package Function
+#   <chr>   <chr>
+# 1 base    c[2];  mean[1];  sum[1]
+
+
 
 }

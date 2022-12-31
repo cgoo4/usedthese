@@ -1,17 +1,23 @@
 #' Extract & summarise function usage
 #'
-#' @param x A file name -- .R, .Rmd or .qmd
+#' @param fil A file name (.R, .Rmd or .qmd)
 #'
-#' @return Printed table
+#' @return A tibble
+#'
 #' @export
 #'
 #' @examples
-#' xxx
+#' # Mimics the input of a two-line R script
+#' sift("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
+#' #   A tibble: 1 × 2
+#' #   Package Function
+#' #   <chr>   <chr>
+#' # 1 base    c[2];  mean[1];  sum[1]
 #'
-sift <- \(){
+sift <- \(fil){
   box <- .packages() |> # Attached packages & functions
     rlang::set_names() |>
-    purrr::map(\(x) ls(str_c("package:", x))) |>
+    purrr::map(\(x) base::ls(stringr::str_c("package:", x))) |>
     tibble::enframe("pckg", "func") |>
     tidyr::unnest(cols = func)
 
@@ -26,18 +32,22 @@ sift <- \(){
 
   # Extract code
 
-  # options(knitr.duplicate.label = "allow")
+  options(knitr.duplicate.label = "allow")
 
-  # walk("index.qmd", knitr::purl, quiet = TRUE, documentation = 0)
+  if(stringr::str_ends(fil, "Rmd|qmd")) {
+    purrr::walk(fil, knitr::purl, quiet = TRUE, documentation = 0)
 
-  code_only <- "R/sift.R" |>
-    brio::read_lines() |>
+    fil <- stringr::str_replace(fil, "Rmd|qmd", "R")
+  }
+
+  code_only <- fil |>
+    readr::read_lines() |>
     highr::hi_latex() |>
     stringr::str_extract_all("(?<=kwd\\{)[a-zA-Z0-9_.]*(?=\\})") |>
     unlist() |>
     sort()
 
-  # unlink("index.R")
+  base::unlink(fil)
 
   # Which functions are used in the code?
 
@@ -45,21 +55,21 @@ sift <- \(){
     tibble::tibble(
       Package = j,
       func = i,
-      total = code_only |> str_count(str_c("^\\Q", i, "\\E$")) |> sum()
+      total = code_only |> stringr::str_count(stringr::str_c("^\\Q", i, "\\E$")) |> base::sum()
     )
   }) |>
     purrr::list_rbind() |>
-    filter(total > 0) |>
+    dplyr::filter(total > 0) |>
     dplyr::mutate(
-      conflict = if_else(func %in% conflicts(), 1, 0),
-      Function = str_c(func, "[", total, "]"),
-      Package = str_remove(Package, "package:")
+      conflict = dplyr::if_else(func %in% base::conflicts(), 1, 0),
+      Function = stringr::str_c(func, "[", total, "]"),
+      Package = stringr::str_remove(Package, "package:")
     ) |>
-    dplyr::arrange(desc(conflict), func) |>
-    dplyr::filter(conflict == 0 | str_c(Package, func) %in%
+    dplyr::arrange(dplyr::desc(conflict), func) |>
+    dplyr::filter(conflict == 0 | stringr::str_c(Package, func) %in%
       stringr::str_c(origin$Package, origin$func)) |>
     dplyr::summarise(
-      Function = str_c(Function, collapse = ";  "),
+      Function = stringr::str_c(Function, collapse = ";  "),
       .by = Package
     ) |>
     dplyr::arrange(Package)
