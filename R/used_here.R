@@ -8,13 +8,13 @@
 #'
 #' @examples
 #' # Mimics the input of a two-line R script
-#' sift("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
+#' used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
 #' #   A tibble: 1 × 2
 #' #   Package Function
 #' #   <chr>   <chr>
 #' # 1 base    c[2];  mean[1];  sum[1]
 #'
-sift <- \(fil){
+used_here <- \(fil = knitr::current_input()){
   box <- .packages() |> # Attached packages & functions
     rlang::set_names() |>
     purrr::map(\(x) base::ls(stringr::str_c("package:", x))) |>
@@ -34,10 +34,10 @@ sift <- \(fil){
 
   options(knitr.duplicate.label = "allow")
 
-  if(stringr::str_ends(fil, "Rmd|qmd")) {
+  if (stringr::str_ends(fil, "Rmd|qmd|rmarkdown")) {
     purrr::walk(fil, knitr::purl, quiet = TRUE, documentation = 0)
 
-    fil <- stringr::str_replace(fil, "Rmd|qmd", "R")
+    fil <- stringr::str_replace(fil, "Rmd|qmd|rmarkdown", "R")
   }
 
   code_only <- fil |>

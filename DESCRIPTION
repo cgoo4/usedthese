@@ -1,13 +1,14 @@
-Package: sieve
+Package: usedthese
 Type: Package
-Title: Counts the functions used in an R script
+Title: Counts the packages & functions used in R files
 Version: 0.1.0
 Author: Carl Goodwin
 Maintainer: The package maintainer <carl.goodwin@protonmail.com>
-Description: Reads a .R, .Rmd or .qmd file. Extracts and counts the R 
-    functions used. Summarises and arranges the package and function 
-    usage in a table. The package is powered by knitr::purl to remove 
-    code from a .Rmd or .qmd, and by highr::latext to identify functions 
+Description: Reads an R script, R Markdown file or Quarto document. 
+    Extracts and counts the R packages and
+    functions used. Summarises and arranges the  
+    usage in a table. The package is powered by knitr::purl to grab the  
+    code and by highr::hi_latex to identify functions 
     consistent with RStudio's syntax highlighting.
 License: MIT + file LICENSE
 Encoding: UTF-8
