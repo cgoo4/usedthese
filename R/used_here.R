@@ -32,7 +32,8 @@ used_here <- \(fil = knitr::current_input()){
 
   # Extract code
 
-  options(knitr.duplicate.label = "allow")
+  old <- options(knitr.duplicate.label = "allow")
+  withr::defer(options(old))
 
   if (stringr::str_ends(fil, "Rmd|qmd|rmarkdown")) {
     purrr::walk(fil, knitr::purl, quiet = TRUE, documentation = 0)
@@ -72,5 +73,7 @@ used_here <- \(fil = knitr::current_input()){
       Function = stringr::str_c(Function, collapse = ";  "),
       .by = Package
     ) |>
-    dplyr::arrange(Package)
+    dplyr::arrange(Package) |>
+    knitr::kable(format = "html", table.attr = "class = 'usethese'") |>
+    kableExtra::kable_styling("striped")
 }

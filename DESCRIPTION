@@ -20,10 +20,12 @@ RoxygenNote: 7.2.3
 Imports: 
     dplyr,
     highr,
+    kableExtra,
     knitr,
     purrr,
     readr,
     rlang,
     stringr,
     tibble,
-    tidyr
+    tidyr,
+    withr
