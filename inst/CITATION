@@ -5,6 +5,6 @@ citEntry(
   title    = "Usedthese: R Package & Function Usage",
   author   = "Carl Goodwin",
   year     = "2022",
-  url      = "https://quantumjitter.com",
-  textVersion = "Goodwin, Carl. 2022. Usedthese: R Package & Function Usage (https://quantumjitter.com)"
+  url      = "https://github.com/cgoo4/usedthese",
+  textVersion = "Goodwin, Carl. 2022. Usedthese: R Package & Function Usage"
 )
