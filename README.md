@@ -10,8 +10,8 @@ The overall goal of usedthese is to:
 
 1.  With `used_here()`, make it super easy to add a nicely-rendered
     summary table of R package & function usage, consistent with knitr’s
-    syntax highlighting, to the foot of a Quarto or R Markdown document.
-    \[Development version available.\]
+    syntax highlighting, to the foot of a rendered Quarto or R Markdown
+    document. \[Development version available.\]
 
 2.  With `used_there()`, harvest multiple such tables to create an
     overall summary of usage for your website. \[Statement of future
@@ -38,9 +38,15 @@ devtools::install_github("cgoo4/usedthese")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example showing how `used_here()` captures and counts
+the usage of the syntax-highlighted functions and their originating
+packages within a rendered Quarto document:
 
 ``` r
+---
+title: "example"
+---
+  
 library(tidyverse)
 library(usedthese)
 
