@@ -9,7 +9,7 @@
 The overall goal of usedthese is to:
 
 1.  With `used_here()`, make it super easy to add a nicely-rendered
-    summary table of R package & function usage, consistent with RStudio
+    summary table of R package & function usage, consistent with knitr’s
     syntax highlighting, to the foot of a Quarto or R Markdown document.
     \[Development version available.\]
 
@@ -19,8 +19,8 @@ The overall goal of usedthese is to:
 
 3.  With `used_elsewhere()`, websites deploying the usedthese package,
     and where the owners have explicitly chosen to add their website url
-    to a participation list, may be analysed from wider package &
-    function usage. \[Statement of future intent.\]
+    to a participation list, may be analysed for a broader view of
+    package & function usage. \[Statement of future intent.\]
 
 4.  With `used_where()`, for a supplied specific function example use
     cases may be found from websites participating per 3. \[Statement of
@@ -41,9 +41,15 @@ devtools::install_github("cgoo4/usedthese")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
+library(tidyverse)
 library(usedthese)
 
-used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
+tribble(~a1, ~a2, ~b1,
+        1, 2, 3,
+        4, 5, 6) |> 
+  select(starts_with("a"))
+
+used_here()
 ```
 
-![](images/image-825571887.png)
+![](images/image-1783659192.png)
