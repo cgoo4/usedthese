@@ -30,6 +30,11 @@
 #' # base    c[2];  mean[1];  sum[1]
 #'
 used_here <- \(fil = knitr::current_input()) {
+
+  if (is.null(fil)) {
+    rlang::abort("The fil argument must either be a quoted Quarto/R Markdown filename or, if left unspecified, must be the document you are currently knitting, e.g. you clicked the Render button.", "used_here_error", fil = fil)
+  }
+
   old <- options(knitr.duplicate.label = "allow")
   withr::defer(options(old))
 
