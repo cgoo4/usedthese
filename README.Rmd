@@ -46,16 +46,17 @@ This is a basic example showing how `used_here()` captures and counts the usage 
 ---
 title: "example"
 ---
-  
-library(tidyverse)
+
+library(tidyverse) 
 library(usedthese)
 
 tribble(~a1, ~a2, ~b1,
         1, 2, 3,
         4, 5, 6) |> 
-  select(starts_with("a"))
+  select(starts_with("a")) |> 
+  mutate(mean_a1 = mean(a1))
 
 used_here()
 ```
 
-![](images/image-1783659192.png)
+![](images/image-1539147754.png)
