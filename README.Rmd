@@ -42,8 +42,10 @@ devtools::install_github("cgoo4/usedthese")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r example, eval=FALSE}
 library(usedthese)
 
 used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
 ```
+
+![](images/image-825571887.png)
