@@ -2,25 +2,39 @@
 % Please edit documentation in R/used_here.R
 \name{used_here}
 \alias{used_here}
-\title{Extract & summarise function usage}
+\title{Close a document with a summary of package & function usage}
 \usage{
 used_here(fil = knitr::current_input())
 }
 \arguments{
-\item{fil}{A file name (.R, .Rmd or .qmd)}
+\item{fil}{The name of a knitted file, e.g. "foobar.qmd",
+or leave empty for the name of the input file passed to knit()}
 }
 \value{
-A tibble
+A printed kable-styled table with the css class "usedthese"
 }
 \description{
-Extract & summarise function usage
+Consistent with knitr syntax highlighting, `used_here()` adds a
+summary table of R package & function usage to a Quarto or R Markdown output.
+Where summary tables are, for example, added to multiple website posts,
+these may be further summarised for the site by harvesting tables with
+the "usedthese" css class.
+}
+\details{
+# Conflicts
+
+Suppose the tidyverse is loaded and `as_tibble()` is used in the code. `used_here()`
+will recognise that dplyr imports the function from the tibble package and so
+counts the usage accordingly. Similarly, if `ends_with()` is used this will be counted
+against the originating tidyselect package rather than dplyr.
+
+Where a package function conflicts with a base package, e.g. `filter()`, it is (reasonably)
+assumed that the intent was to use the dplyr version.
 }
 \examples{
 # Mimics the input of a two-line R script
 used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
-#   A tibble: 1 × 2
-#   Package Function
-#   <chr>   <chr>
-# 1 base    c[2];  mean[1];  sum[1]
+# Package Function
+# base    c[2];  mean[1];  sum[1]
 
 }

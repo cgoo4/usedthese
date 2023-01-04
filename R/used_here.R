@@ -1,37 +1,35 @@
-#' Extract & summarise function usage
+#' Close a document with a summary of package & function usage
 #'
-#' @param fil A file name (.R, .Rmd or .qmd)
+#' Consistent with knitr syntax highlighting, `used_here()` adds a
+#' summary table of R package & function usage to a Quarto or R Markdown output.
+#' Where summary tables are, for example, added to multiple website posts,
+#' these may be further summarised for the site by harvesting tables with
+#' the "usedthese" css class.
 #'
-#' @return A tibble
+#' @details # Conflicts
+#'
+#' Suppose the tidyverse is loaded and `as_tibble()` is used in the code. `used_here()`
+#' will recognise that dplyr imports the function from the tibble package and so
+#' counts the usage accordingly. Similarly, if `ends_with()` is used this will be counted
+#' against the originating tidyselect package rather than dplyr.
+#'
+#' Where a package function conflicts with a base package, e.g. `filter()`, it is (reasonably)
+#' assumed that the intent was to use the dplyr version.
+#'
+#' @param fil The name of a knitted file, e.g. "foobar.qmd",
+#' or leave empty for the name of the input file passed to knit()
+#'
+#' @return A printed kable-styled table with the css class "usedthese"
 #'
 #' @export
 #'
 #' @examples
 #' # Mimics the input of a two-line R script
 #' used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
-#' #   A tibble: 1 × 2
-#' #   Package Function
-#' #   <chr>   <chr>
-#' # 1 base    c[2];  mean[1];  sum[1]
+#' # Package Function
+#' # base    c[2];  mean[1];  sum[1]
 #'
-used_here <- \(fil = knitr::current_input()){
-  box <- .packages() |> # Attached packages & functions
-    rlang::set_names() |>
-    purrr::map(\(x) base::ls(stringr::str_c("package:", x))) |>
-    tibble::enframe("pckg", "func") |>
-    tidyr::unnest(cols = func)
-
-  origin <- tibble::tribble( # Keep these where there are conflicts
-    ~Package, ~func,
-    "dplyr", "filter",
-    "tibble", "as_tibble",
-    "tibble", "tibble",
-    "tibble", "tribble",
-    "quanteda", "t"
-  )
-
-  # Extract code
-
+used_here <- \(fil = knitr::current_input()) {
   old <- options(knitr.duplicate.label = "allow")
   withr::defer(options(old))
 
@@ -41,39 +39,74 @@ used_here <- \(fil = knitr::current_input()){
     fil <- stringr::str_replace(fil, "Rmd|qmd|rmarkdown", "R")
   }
 
-  code_only <- fil |>
+  pckg_loaded <- .packages() |>
+    rlang::set_names()
+
+  funs_loaded <- pckg_loaded |>
+    purrr::map(\(x) base::ls(stringr::str_c("package:", x))) |>
+    tibble::enframe("pckg_loaded", "func") |>
+    tidyr::unnest(cols = func)
+
+  funs_origin <- pckg_loaded |>
+    purrr::map(getNamespaceImports) |>
+    purrr::list_flatten() |>
+    tibble::enframe() |>
+    dplyr::filter(value != "TRUE") |>
+    tidyr::unnest(value) |>
+    tidyr::separate(name, into = c("pckg_loaded", "pckg_origin")) |>
+    dplyr::rename(func = value) |>
+    dplyr::distinct()
+
+  pckg_base <-
+    c("stats",
+      "graphics",
+      "grDevices",
+      "utils",
+      "datasets",
+      "methods",
+      "base")
+
+  funs_augmented <- funs_loaded |>
+    dplyr::left_join(
+      funs_origin,
+      dplyr::join_by(pckg_loaded == pckg_loaded, func == func)
+    ) |>
+    dplyr::mutate(base = dplyr::if_else(pckg_loaded %in% pckg_base, 1L, 0L)) |>
+    dplyr::group_by(func) |>
+    dplyr::filter(base == base::min(base)) |>
+    tidyr::fill(pckg_origin, .direction = "updown") |>
+    dplyr::mutate(
+      n = dplyr::n(),
+      pckg_loaded = dplyr::if_else(n > 1, pckg_origin, pckg_loaded)
+    ) |>
+    dplyr::select(pckg = pckg_loaded, func) |>
+    dplyr::distinct()
+
+  funs_coded <- fil |>
     readr::read_lines() |>
-    highr::hi_latex() |>
-    stringr::str_extract_all("(?<=kwd\\{)[a-zA-Z0-9_.]*(?=\\})") |>
-    unlist() |>
-    sort()
+    highr::hi_latex(fallback = TRUE) |>
+    stringr::str_extract_all("(?<=kwd\\{)[^\\{\\}]*(?=\\})") |>
+    purrr::list_c()
 
-  base::unlink(fil)
-
-  # Which functions are used in the code?
-
-  purrr::map2(box$func, box$pckg, \(i, j) {
-    tibble::tibble(
-      Package = j,
-      func = i,
-      total = code_only |> stringr::str_count(stringr::str_c("^\\Q", i, "\\E$")) |> base::sum()
-    )
-  }) |>
+  funs_used <-
+    purrr::map2(funs_augmented$func, funs_augmented$pckg, \(i, j) {
+      tibble::tibble(
+        pckg = j,
+        func = i,
+        total = funs_coded |> stringr::str_count(stringr::str_c("^\\Q", i, "\\E$")) |> base::sum()
+      )
+    }) |>
     purrr::list_rbind() |>
     dplyr::filter(total > 0) |>
-    dplyr::mutate(
-      conflict = dplyr::if_else(func %in% base::conflicts(), 1, 0),
-      Function = stringr::str_c(func, "[", total, "]"),
-      Package = stringr::str_remove(Package, "package:")
+    dplyr::mutate(func = stringr::str_c(func, "[", total, "]")) |>
+    dplyr::summarise(func = stringr::str_c(func, collapse = ";  "), .by = pckg) |>
+    dplyr::arrange(pckg)
+
+  funs_used |>
+    knitr::kable(
+      format = "html",
+      table.attr = "class = 'usethese'",
+      col.names = c("Package", "Function")
     ) |>
-    dplyr::arrange(dplyr::desc(conflict), func) |>
-    dplyr::filter(conflict == 0 | stringr::str_c(Package, func) %in%
-      stringr::str_c(origin$Package, origin$func)) |>
-    dplyr::summarise(
-      Function = stringr::str_c(Function, collapse = ";  "),
-      .by = Package
-    ) |>
-    dplyr::arrange(Package) |>
-    knitr::kable(format = "html", table.attr = "class = 'usethese'") |>
     kableExtra::kable_styling("striped")
 }
