@@ -26,6 +26,20 @@ The overall goal of usedthese is to:
     cases may be found from websites participating per 3. \[Statement of
     future intent.\]
 
+## Example Site
+
+Each “little project” on
+[quantumjitter.com](https://www.quantumjitter.com/project/) focuses on a
+data science technique or machine learning model to analyse real-world
+data. At the foot of each of these is a concise quantified view of the R
+packages and functions used in the associated code. This is achieved by
+including `used_here()` in each Quarto document.
+
+`used_there()` harvests all the tables created by `used_here()` to
+enable a [Favourite Things](https://www.quantumjitter.com/project/box/)
+view of how R packages and functions are used right across
+quantumjitter.com.
+
 ## Installation
 
 You can install the development version of usedthese from
@@ -35,28 +49,3 @@ You can install the development version of usedthese from
 # install.packages("devtools")
 devtools::install_github("cgoo4/usedthese")
 ```
-
-## Example
-
-This is a basic example showing how `used_here()` captures and counts
-the usage of the syntax-highlighted functions and their originating
-packages within a rendered Quarto document:
-
-``` r
----
-title: "example"
----
-
-library(tidyverse) 
-library(usedthese)
-
-tribble(~a1, ~a2, ~b1,
-        1, 2, 3,
-        4, 5, 6) |> 
-  select(starts_with("a")) |> 
-  mutate(mean_a1 = mean(a1))
-
-used_here()
-```
-
-![](images/image-1539147754.png)
