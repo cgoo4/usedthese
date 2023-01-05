@@ -4,3 +4,6 @@
 ^README\.Rmd$
 ^README_files$
 ^images$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
