@@ -14,19 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Worked Example
-
-`used_here()` considers 4 inputs:
-
-1.  The names of packages loaded with `library()`;
-
-2.  The functions used by these loaded packages;
-
-3.  The originating package name if a function is imported;
-
-4.  The functions syntax highlighted in the rendered Quarto document.
-
-In the example below, `tribble` is counted once against the (originating) tibble package even though it is also loaded by dplyr. And `used_here()` assumes a loaded function is used in preference to a base function of the same name, so `dplyr::filter`, for example, is counted rather than `stats::filter`.
+In the example below, `tribble` is counted once against the (originating) tibble package even though it is also loaded by dplyr. And `used_here()` assumes a loaded function in rather than a base function of the same name, so `dplyr::filter`, for example, is counted rather than `stats::filter`.
 
 Without `exclude = "first"`, `first` would be shown as package `NA` since `used_here()` would not know if the intent was `xts::first` or `dplyr::first`. Adding an `exclude` (or `include.only`), argument to `library(xts)`, assuming it's needed for other functions when further coded is later added, makes this clear.
 

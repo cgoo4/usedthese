@@ -108,7 +108,7 @@ used_here <- \(fil = knitr::current_input()) {
   funs_used |>
     knitr::kable(
       format = "html",
-      table.attr = "class = 'usethese'",
+      table.attr = "class = 'usedthese'",
       col.names = c("Package", "Function")
     ) |>
     kableExtra::kable_styling("striped")

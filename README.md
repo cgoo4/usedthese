@@ -24,7 +24,7 @@ consistent with knitr’s syntax highlighting:
 4.  `used_where()` finds pages on opt-in websites that use a specified R
     function. \[Function planned.\]
 
-## Example Website
+## Example Use Case
 
 Each “little project” on
 [quantumjitter.com](https://www.quantumjitter.com/project/) focuses on a

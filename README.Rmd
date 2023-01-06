@@ -31,7 +31,7 @@ usedthese is a family of functions to summarise package & function usage consist
 
 4.  `used_where()` finds pages on opt-in websites that use a specified R function. [Function planned.]
 
-## Example Website
+## Example Use Case
 
 Each "little project" on [quantumjitter.com](https://www.quantumjitter.com/project/) focuses on a data science technique or machine learning model to analyse real-world data. At the foot of each of these is a concise quantified view of the R packages and functions used in the associated code. This is achieved by including `used_here()` in each Quarto document.
 

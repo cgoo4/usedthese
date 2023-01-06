@@ -5,9 +5,8 @@ Version: 0.0.0.9000
 Authors@R: person("Carl", "Goodwin", email = "carl.goodwin@quantumjitter.com",
   role = c("aut", "cre"))
 Description: Consistent with knitr syntax highlighting, 'usedthese' adds a
-    summary table of R package & function usage to a Quarto or R Markdown output. 
-    If the summary table is added to multiple website posts, then 'usedthese' can
-    further summarise usage across the website.
+    summary table of R package & function usage to a Quarto or R Markdown 
+    output and enables aggregation of usage across a website.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

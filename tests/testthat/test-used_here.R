@@ -12,7 +12,7 @@ test_that("basic test", {
         "tibble[1]"
       )
     ) |>
-      knitr::kable(format = "html", table.attr = "class = 'usethese'") |>
+      knitr::kable(format = "html", table.attr = "class = 'usedthese'") |>
       kableExtra::kable_styling("striped")
   )
 })
@@ -28,7 +28,7 @@ test_that("filter conflict", {
         "tibble[1]"
       )
     ) |>
-      knitr::kable(format = "html", table.attr = "class = 'usethese'") |>
+      knitr::kable(format = "html", table.attr = "class = 'usedthese'") |>
       kableExtra::kable_styling("striped")
   )
 })
