@@ -22,8 +22,7 @@
 #' @export
 #'
 #' @examples
-#' # Mimics the input of a two-line R script:
-#' # used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
+#' # Simple example -- see Get Started for an extended example
 #' mean(c(1, 2, 3))
 #' sum(c(1, 2, 3))
 #'
