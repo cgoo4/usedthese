@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 In the example below, `tribble` is counted once against the (originating) tibble package even though it is also loaded by dplyr. And `used_here()` assumes a loaded function is used rather than a base function of the same name, so `dplyr::filter`, for example, is counted rather than `stats::filter`.
 
-Both dplyr and xts have `first` and `last` functions. Because we've explicitly excluded `first` in the library call for xts, the function is counted against dplyr. However, as there is no similar exclusion for `last`, this is shown against both packages as a DUPE so a decision may be made as to which should be excluded. (`library` can take an `exclude` character vector or an `include.only` vector.)
+Both the dplyr and xts packages have `first` and `last` functions. Because we've explicitly excluded `first` in the library call for xts, the function is counted against dplyr. However, as there is no similar exclusion for `last`, this is shown against both packages as a DUPE so a decision may be made as to which should be excluded. (`library` can take an `exclude` character vector or an `include.only` vector.)
 
 The rendered table is assigned the CSS class `.usedthese` to help other `used_*` functions find and aggregate multiple tables across one or more websites.
 
