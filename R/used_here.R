@@ -78,10 +78,15 @@ used_here <- \(fil = knitr::current_input()) {
     dplyr::group_by(func) |>
     dplyr::filter(base == base::min(base)) |>
     tidyr::fill(pckg_origin, .direction = "updown") |>
-    dplyr::mutate(
-      n = dplyr::n(),
-      pckg_loaded = dplyr::if_else(n > 1, pckg_origin, pckg_loaded)
-    ) |>
+    dplyr::mutate(n = dplyr::n(),
+                  # pckg_loaded = dplyr::if_else(n > 1, pckg_origin, pckg_loaded)
+                  pckg_loaded =
+                    dplyr::if_else(
+                      n > 1 & is.na(pckg_origin),
+                      stringr::str_c("[DUPE]", pckg_loaded),
+                      dplyr::if_else(n > 1 &
+                                !is.na(pckg_origin), pckg_origin, pckg_loaded)
+                    )) |>
     dplyr::select(pckg = pckg_loaded, func) |>
     dplyr::distinct()
 
