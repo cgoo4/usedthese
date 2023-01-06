@@ -22,7 +22,7 @@
 #' @export
 #'
 #' @examples
-#' # Mimics the input of a two-line R script
+#' # Mimics the input of a two-line R script:
 #' # used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
 #' # Package Function
 #' # base    c[2];  mean[1];  sum[1]
