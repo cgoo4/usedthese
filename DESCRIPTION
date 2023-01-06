@@ -31,6 +31,7 @@ Imports:
     withr
 Depends: 
     R (>= 2.10)
-URL: https://github.com/cgoo4/usedthese
+URL: https://github.com/cgoo4/usedthese,
+    https://cgoo4.github.io/usedthese/
 BugReports: https://github.com/cgoo4/usedthese/issues
 VignetteBuilder: knitr
