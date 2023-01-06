@@ -26,7 +26,7 @@ The overall goal of usedthese is to:
     cases may be found from websites participating per 3. \[Statement of
     future intent.\]
 
-## Example Site
+## Case Study
 
 Each “little project” on
 [quantumjitter.com](https://www.quantumjitter.com/project/) focuses on a
@@ -39,6 +39,12 @@ including `used_here()` in each Quarto document.
 enable a [Favourite Things](https://www.quantumjitter.com/project/box/)
 view of how R packages and functions are used right across
 quantumjitter.com.
+
+When an updated version of dplyr introduced the `.by` argument for
+mutate and friends, it was helpful to see how many times `group_by()`
+and `ungroup()` had been used across all projects. And after updating
+the projects where it made sense to do so, it was interesting to see the
+overall impact of the changes on usage.
 
 ## Installation
 

@@ -1,31 +1,29 @@
-#' Close a document with a summary of package & function usage
+#' Summarise function usage here
 #'
-#' Consistent with knitr syntax highlighting, `used_here()` adds a
+#' Consistent with knitr syntax highlighting, used_here() adds a
 #' summary table of R package & function usage to a Quarto or R Markdown output.
-#' Where summary tables are, for example, added to multiple website posts,
-#' these may be further summarised for the site by harvesting tables with
-#' the "usedthese" css class.
 #'
 #' @details # Conflicts
 #'
-#' Suppose the tidyverse is loaded and `as_tibble()` is used in the code. `used_here()`
-#' will recognise that dplyr imports the function from the tibble package and so
-#' counts the usage accordingly. Similarly, if `ends_with()` is used this will be counted
-#' against the originating tidyselect package rather than dplyr.
+#' If the rendered summary includes a row where the package is "NA", this will be due to
+#' a conflict used_here() was unable to resolve, e.g. dplyr::first versus xts::first. In
+#' such cases, the recommendation is to add "exclude = first" to the library call of the
+#' unwanted version.
 #'
-#' Where a package function conflicts with a base package, e.g. `filter()`, it is (reasonably)
-#' assumed that the intent was to use the dplyr version.
+#' @param fil When knitting the current document, it is not necessary to specify the filename:
+#' just leave as used_here().
 #'
-#' @param fil The name of a knitted file, e.g. "foobar.qmd",
-#' or leave empty for the name of the input file passed to knit()
+#' If you want to create the summary by running the code chunk directly, then it is necessary to
+#' specify the quoted name of the saved file. This would also be the case if the usage summary
+#' is required in, say, a blog post that's referencing the code in some other file.
 #'
-#' @return A printed kable-styled table with the css class "usedthese"
+#' @return A printed kable table with the css class "usedthese"
 #'
 #' @export
 #'
 #' @examples
 #' # Mimics the input of a two-line R script
-#' used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
+#' # used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
 #' # Package Function
 #' # base    c[2];  mean[1];  sum[1]
 #'

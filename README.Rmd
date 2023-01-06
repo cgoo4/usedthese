@@ -29,11 +29,13 @@ The overall goal of usedthese is to:
 
 4.  With `used_where()`, for a supplied specific function example use cases may be found from websites participating per 3. [Statement of future intent.]
 
-## Example Site
+## Case Study
 
 Each "little project" on [quantumjitter.com](https://www.quantumjitter.com/project/) focuses on a data science technique or machine learning model to analyse real-world data. At the foot of each of these is a concise quantified view of the R packages and functions used in the associated code. This is achieved by including `used_here()` in each Quarto document.
 
 `used_there()` harvests all the tables created by `used_here()` to enable a [Favourite Things](https://www.quantumjitter.com/project/box/) view of how R packages and functions are used right across quantumjitter.com.
+
+When an updated version of dplyr introduced the `.by` argument for mutate and friends, it was helpful to see how many times `group_by()` and `ungroup()` had been used across all projects. And after updating the projects where it made sense to do so, it was interesting to see the overall impact of the changes on usage.
 
 ## Installation
 
