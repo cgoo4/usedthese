@@ -21,8 +21,8 @@ consistent with knitr’s syntax highlighting:
     support a broader view of R package & function usage. \[Function
     planned.\]
 
-4.  `used_where()` finds pages on opt-in websites that use a specified R
-    function. \[Function planned.\]
+4.  `used_where()` finds pages on your website (or opt-in websites) that
+    use a specified R function. \[Function planned.\]
 
 ## Example Use Case
 

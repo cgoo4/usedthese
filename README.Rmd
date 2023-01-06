@@ -29,7 +29,7 @@ usedthese is a family of functions to summarise package & function usage consist
 
 3.  `used_elsewhere()` aggregates usage for any opt-in website to support a broader view of R package & function usage. [Function planned.]
 
-4.  `used_where()` finds pages on opt-in websites that use a specified R function. [Function planned.]
+4.  `used_where()` finds pages on your website (or opt-in websites) that use a specified R function. [Function planned.]
 
 ## Example Use Case
 
