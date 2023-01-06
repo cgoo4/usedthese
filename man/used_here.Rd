@@ -2,13 +2,15 @@
 % Please edit documentation in R/used_here.R
 \name{used_here}
 \alias{used_here}
-\title{Summarise package & function usage in "this" document}
+\title{Summarise function usage here}
 \usage{
 used_here(fil = knitr::current_input())
 }
 \arguments{
-\item{fil}{When knitting the current document, it is not necessary to specify the filename.
-If you want to create the summary by running the code chunk, then it is necessary to
+\item{fil}{When knitting the current document, it is not necessary to specify the filename:
+just leave as used_here().
+
+If you want to create the summary by running the code chunk directly, then it is necessary to
 specify the quoted name of the saved file. This would also be the case if the usage summary
 is required in, say, a blog post that's referencing the code in some other file.}
 }
@@ -16,20 +18,20 @@ is required in, say, a blog post that's referencing the code in some other file.
 A printed kable table with the css class "usedthese"
 }
 \description{
-Consistent with knitr syntax highlighting, `used_here()` adds a
+Consistent with knitr syntax highlighting, used_here() adds a
 summary table of R package & function usage to a Quarto or R Markdown output.
 }
 \details{
 # Conflicts
 
 If the rendered summary includes a row where the package is "NA", this will be due to
-a conflict that used_here() was unable to resolve, e.g. xts::first versus dplyr::first. In
+a conflict used_here() was unable to resolve, e.g. dplyr::first versus xts::first. In
 such cases, the recommendation is to add "exclude = first" to the library call of the
 unwanted version.
 }
 \examples{
 # Mimics the input of a two-line R script
-used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
+# used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
 # Package Function
 # base    c[2];  mean[1];  sum[1]
 
