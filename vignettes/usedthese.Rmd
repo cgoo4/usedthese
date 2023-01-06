@@ -14,9 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-In the example below, `tribble` is counted once against the (originating) tibble package even though it is also loaded by dplyr. And `used_here()` assumes a loaded function in rather than a base function of the same name, so `dplyr::filter`, for example, is counted rather than `stats::filter`.
+In the example below, `tribble` is counted once against the (originating) tibble package even though it is also loaded by dplyr. And `used_here()` assumes a loaded function is used rather than a base function of the same name, so `dplyr::filter`, for example, is counted rather than `stats::filter`.
 
-Without `exclude = "first"`, `first` would be shown as package `NA` since `used_here()` would not know if the intent was `xts::first` or `dplyr::first`. Adding an `exclude` (or `include.only`), argument to `library(xts)`, assuming it's needed for other functions when further coded is later added, makes this clear.
+Both dplyr and xts have `first` and `last` functions. Because we've explicitly excluded `first` in the library call for xts, the function is counted against dplyr. However, as there is no similar exclusion for `last`, this is shown against both packages as a DUPE so a decision may be made as to which should be excluded. (`library` can take an `exclude` character vector or an `include.only` vector.)
 
 The rendered table is assigned the CSS class `.usedthese` to help other `used_*` functions find and aggregate multiple tables across one or more websites.
 
@@ -32,7 +32,8 @@ tribble(~group, ~a1, ~a2, ~b1,
         "y", 7, 8, 9) |> 
   select(-starts_with("b")) |> 
   filter(group == "x") |> 
-  mutate(first_a1 = first(a1))
+  mutate(first_a1 = first(a1),
+         last_a2 = last(a2))
 
 used_here()
 ```
