@@ -38,7 +38,7 @@ used_there <- \(url) {
     dplyr::select(package, functn) |>
     tidyr::drop_na()
 
-  tidy_df <- table_df |>
+  table_df |>
     tidyr::separate_rows(functn, sep = ";") |>
     tidyr::separate(functn, c("functn", "count"), "\\Q[\\E") |>
     dplyr::mutate(
@@ -46,24 +46,4 @@ used_there <- \(url) {
       functn = stringr::str_squish(functn)
     ) |>
     dplyr::count(package, functn, wt = count)
-
-  pack_df <- tidy_df |>
-    dplyr::count(package, wt = n) |>
-    dplyr::mutate(name = "package")
-
-  fun_df <- tidy_df |>
-    dplyr::count(functn, wt = n) |>
-    dplyr::mutate(name = "function")
-
-  n_url <- urls |> dplyr::n_distinct()
-
-  pack_df |>
-    dplyr::bind_rows(fun_df) |>
-    dplyr::arrange(desc(n)) |>
-    dplyr::mutate(
-      packfun = dplyr::coalesce(package, functn),
-      name = forcats::fct_rev(name),
-      .by = name
-    ) |>
-    dplyr::select(type = name, packfun, n)
 }
