@@ -38,12 +38,15 @@ used_there <- \(url) {
     dplyr::select(package, functn) |>
     tidyr::drop_na()
 
+  n_url <- urls |> dplyr::n_distinct()
+
   table_df |>
     tidyr::separate_rows(functn, sep = ";") |>
     tidyr::separate(functn, c("functn", "count"), "\\Q[\\E") |>
     dplyr::mutate(
       count = stringr::str_remove(count, "]") |> as.integer(),
-      functn = stringr::str_squish(functn)
+      functn = stringr::str_squish(functn),
+      n_url = n_url
     ) |>
     dplyr::count(package, functn, wt = count)
 }
