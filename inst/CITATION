@@ -2,9 +2,9 @@ citHeader("To cite usedthese in publications use:")
 
 citEntry(
   entry    = "Manual",
-  title    = "Usedthese: R Package & Function Usage",
+  title    = "usedthese: R Package & Function Usage",
   author   = "Carl Goodwin",
   year     = "2022",
   url      = "https://github.com/cgoo4/usedthese",
-  textVersion = "Goodwin, Carl. 2022. Usedthese: R Package & Function Usage"
+  textVersion = "Goodwin, Carl. 2022. usedthese: R Package & Function Usage"
 )

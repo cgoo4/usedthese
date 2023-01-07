@@ -1,8 +1,10 @@
 ---
-title: "usedthese"
+title: "Document usage"
+description: | 
+  Add a summary of R package & function usage to a Quarto document.
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{usedthese}
+  %\VignetteIndexEntry{Document usage}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

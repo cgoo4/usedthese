@@ -11,18 +11,16 @@
 usedthese is a family of functions to summarise package & function usage
 consistent with knitr’s syntax highlighting:
 
-1.  `used_here()` adds a summary table of usage to the foot of a
-    rendered Quarto or R Markdown document.
+1.  `used_here()` adds a summary table of usage to a Quarto document.
 
-2.  `used_there()` aggregates usage for your website ready for analysis.
-    \[Function planned.\]
+2.  `used_there()` aggregates usage for your Quarto website ready for
+    analysis.
 
-3.  `used_elsewhere()` aggregates usage for any opt-in website to
-    support a broader view of R package & function usage. \[Function
-    planned.\]
+3.  `used_elsewhere()` aggregates usage for opted-in websites to support
+    a broader view usage. \[Planned\]
 
-4.  `used_where()` finds pages on your website (or opt-in websites) that
-    use a specified R function. \[Function planned.\]
+4.  `used_where()` finds pages on your website (or opted-in websites)
+    using a specified function. \[Planned\]
 
 ## Example Use Case
 
