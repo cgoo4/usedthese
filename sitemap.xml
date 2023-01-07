@@ -13,6 +13,9 @@
     <loc>https://cgoo4.github.io/usedthese/articles/index.html</loc>
   </url>
   <url>
+    <loc>https://cgoo4.github.io/usedthese/articles/multipage.html</loc>
+  </url>
+  <url>
     <loc>https://cgoo4.github.io/usedthese/articles/usedthese.html</loc>
   </url>
   <url>
@@ -26,5 +29,8 @@
   </url>
   <url>
     <loc>https://cgoo4.github.io/usedthese/reference/used_here.html</loc>
+  </url>
+  <url>
+    <loc>https://cgoo4.github.io/usedthese/reference/used_there.html</loc>
   </url>
 </urlset>
