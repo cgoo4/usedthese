@@ -1,21 +1,19 @@
 #' Summarise function usage here
 #'
-#' Consistent with knitr syntax highlighting, used_here() adds a
-#' summary table of R package & function usage to a Quarto or R Markdown output.
+#' Consistent with knitr syntax highlighting, [used_here()] adds a
+#' summary table of R package & function usage to a knitted Quarto or R Markdown document
 #'
-#' @details # Conflicts
+#' @details If the rendered summary includes rows where the package name is prefixed with "DUPE", this will
+#' be due to a conflict [used_here()] was unable to resolve, e.g. [dplyr::first()] versus
+#' [xts::first()]. In such cases, the recommendation is to add "exclude = first" to the library
+#' call of the unwanted version.
 #'
-#' If the rendered summary includes a row where the package is "NA", this will be due to
-#' a conflict used_here() was unable to resolve, e.g. dplyr::first versus xts::first. In
-#' such cases, the recommendation is to add "exclude = first" to the library call of the
-#' unwanted version.
-#'
-#' @param fil When knitting the current document, it is not necessary to specify the filename:
-#' just leave as used_here().
+#' @param fil If the usage summary is required in the document you are currently knitting the current document, it is not necessary to specify
+#' then no argument need be specified.
 #'
 #' If you want to create the summary by running the code chunk directly, then it is necessary to
 #' specify the quoted name of the saved file. This would also be the case if the usage summary
-#' is required in, say, a blog post that's referencing the code in some other file.
+#' is required in, say, a blog post that's summarising the code in some other file.
 #'
 #' @return A printed kable table with the css class "usedthese"
 #'

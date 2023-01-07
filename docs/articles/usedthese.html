@@ -74,19 +74,19 @@
 
     
     
-<p>In the example below, <code>tribble</code> is counted once against
+<p>In the example below, <code><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble()</a></code> is counted once against
 the (originating) tibble package even though it is also loaded by dplyr.
 And <code><a href="../reference/used_here.html">used_here()</a></code> assumes a loaded function is used rather
-than a base function of the same name, so <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">dplyr::filter</a></code>,
-for example, is counted rather than <code><a href="https://rdrr.io/r/stats/filter.html" class="external-link">stats::filter</a></code>.</p>
-<p>Both the dplyr and xts packages have <code>first</code> and
-<code>last</code> functions. Because we’ve explicitly excluded
-<code>first</code> in the library call for xts, the function is counted
-against dplyr. However, as there is no similar exclusion for
-<code>last</code>, this is shown against both packages as a DUPE so a
-decision may be made as to which should be excluded.
-(<code>library</code> can take an <code>exclude</code> character vector
-or an <code>include.only</code> vector.)</p>
+than a base function of the same name, so <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">dplyr::filter()</a></code>,
+for example, is counted rather than <code><a href="https://rdrr.io/r/stats/filter.html" class="external-link">stats::filter()</a></code>.</p>
+<p>Both the dplyr and xts packages have <code><a href="https://rdrr.io/pkg/xts/man/first.html" class="external-link">first()</a></code> and
+<code><a href="https://rdrr.io/pkg/xts/man/first.html" class="external-link">last()</a></code> functions. Because we’ve explicitly excluded
+<code><a href="https://rdrr.io/pkg/xts/man/first.html" class="external-link">first()</a></code> in the library call for xts, the function is
+counted against dplyr. However, as there is no similar exclusion for
+<code><a href="https://rdrr.io/pkg/xts/man/first.html" class="external-link">last()</a></code>, this is shown against both packages as a DUPE; a
+decision needs to be made as to which should be excluded.
+(<code><a href="https://rdrr.io/r/base/library.html" class="external-link">library()</a></code> can take an <code>exclude</code> character
+vector or an <code>include.only</code> vector.)</p>
 <p>The rendered table is assigned the CSS class <code>.usedthese</code>
 to help other <code>used_*</code> functions find and aggregate multiple
 tables across one or more websites.</p>
