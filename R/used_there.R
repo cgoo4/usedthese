@@ -48,5 +48,5 @@ used_there <- \(url) {
       functn = stringr::str_squish(functn),
       n_url = n_url
     ) |>
-    dplyr::count(package, functn, wt = count)
+    dplyr::count(package, functn, n_url, wt = count)
 }
