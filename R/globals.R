@@ -1,1 +1,17 @@
-utils::globalVariables(c("value", "name", "base", "pckg_origin", "n", "pckg", "func", "total"))
+utils::globalVariables(
+  c(
+    "value",
+    "name",
+    "base",
+    "pckg_origin",
+    "n",
+    "pckg",
+    "func",
+    "total",
+    "count",
+    "desc",
+    "functn",
+    "package",
+    "packfun"
+  )
+)
