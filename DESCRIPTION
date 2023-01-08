@@ -22,7 +22,6 @@ Imports:
     dplyr (>= 1.0.99.9000),
     highr,
     httr,
-    janitor,
     kableExtra,
     knitr,
     purrr,

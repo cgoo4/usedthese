@@ -21,32 +21,29 @@ used_there <- \(url) {
                          .quarto-table-link") |>
     rvest::html_attr("href") |>
     tibble::as_tibble() |>
-    dplyr::transmute(stringr::str_c("https://",
-                                    httr::parse_url(url)$hostname,
-                                    value)) |>
+    dplyr::transmute(stringr::str_c(
+      "https://",
+      httr::parse_url(url)$hostname,
+      value
+    )) |>
     dplyr::pull()
 
   table_df <- purrr::map(urls, \(x) {
     x |>
       rvest::read_html() |>
-      rvest::html_elements(".usedthese") |>
-      rvest::html_table()
+      rvest::html_element(".usedthese") |>
+      rvest::html_table() |>
+      dplyr::mutate(url = x)
   }) |>
     purrr::list_flatten() |>
-    purrr::list_rbind() |>
-    janitor::clean_names(replace = c("io" = "")) |>
-    dplyr::select(package, functn) |>
-    tidyr::drop_na()
-
-  n_url <- urls |> dplyr::n_distinct()
+    purrr::list_rbind()
 
   table_df |>
-    tidyr::separate_rows(functn, sep = ";") |>
-    tidyr::separate(functn, c("functn", "count"), "\\Q[\\E") |>
+    tidyr::separate_rows(Function, sep = ";") |>
+    tidyr::separate(Function, c("Function", "count"), "\\Q[\\E") |>
     dplyr::mutate(
       count = stringr::str_remove(count, "]") |> as.integer(),
-      functn = stringr::str_squish(functn),
-      n_url = n_url
+      Function = stringr::str_squish(Function)
     ) |>
-    dplyr::count(package, functn, n_url, wt = count)
+    dplyr::count(Package, Function, url, wt = count)
 }

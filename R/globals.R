@@ -10,8 +10,8 @@ utils::globalVariables(
     "total",
     "count",
     "desc",
-    "functn",
-    "package",
+    "Function",
+    "Package",
     "packfun"
   )
 )
