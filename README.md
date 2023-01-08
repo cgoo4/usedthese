@@ -8,6 +8,8 @@
 [![R-CMD-check](https://github.com/cgoo4/usedthese/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cgoo4/usedthese/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Codecov test
+coverage](https://codecov.io/gh/cgoo4/usedthese/branch/master/graph/badge.svg)](https://app.codecov.io/gh/cgoo4/usedthese?branch=master)
 <!-- badges: end -->
 
 ## Overview
