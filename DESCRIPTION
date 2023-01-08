@@ -40,3 +40,4 @@ BugReports: https://github.com/cgoo4/usedthese/issues
 VignetteBuilder: knitr
 Remotes: 
     tidyverse/dplyr
+Roxygen: list(markdown = TRUE)

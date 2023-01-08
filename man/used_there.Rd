@@ -2,17 +2,22 @@
 % Please edit documentation in R/used_there.R
 \name{used_there}
 \alias{used_there}
-\title{Aggregate website function usage}
+\title{Aggregate multi-table usage}
 \usage{
 used_there(url)
 }
 \arguments{
 \item{url}{The url to the website listing page of posts containing usage tables created with
-[used_here()]}
+\code{\link[=used_here]{used_here()}}}
 }
 \value{
 A tibble summarising package & function usage
 }
 \description{
 Harvests and aggregates the function usage tables from multiple pages in a website
+}
+\examples{
+# Uses a Quarto listing url to aggregate usage across website pages
+used_there("https://www.quantumjitter.com/project/")
+
 }

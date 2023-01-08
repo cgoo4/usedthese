@@ -18,13 +18,13 @@ is required in, say, a blog post that's summarising the code in some other file.
 A printed kable table with the css class "usedthese"
 }
 \description{
-Consistent with knitr syntax highlighting, [used_here()] adds a
+Consistent with knitr syntax highlighting, \code{\link[=used_here]{used_here()}} adds a
 summary table of R package & function usage to a knitted Quarto or R Markdown document
 }
 \details{
 If the rendered summary includes rows where the package name is prefixed with "DUPE", this will
-be due to a conflict [used_here()] was unable to resolve, e.g. [dplyr::first()] versus
-[xts::first()]. In such cases, the recommendation is to add "exclude = first" to the library
+be due to a conflict \code{\link[=used_here]{used_here()}} was unable to resolve, e.g. \code{\link[dplyr:nth]{dplyr::first()}} versus
+\code{\link[xts:first]{xts::first()}}. In such cases, the recommendation is to add "exclude = first" to the library
 call of the unwanted version.
 }
 \examples{
