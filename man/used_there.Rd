@@ -2,7 +2,7 @@
 % Please edit documentation in R/used_there.R
 \name{used_there}
 \alias{used_there}
-\title{Aggregate multi-table usage}
+\title{Scrape the summaries for site-wide analysis}
 \usage{
 used_there(url)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/used_here.R
 \name{used_here}
 \alias{used_here}
-\title{Summarise function usage here}
+\title{Summarise function usage in a single document}
 \usage{
 used_here(fil = knitr::current_input())
 }

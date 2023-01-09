@@ -27,4 +27,4 @@ Having added `used_here()` to several of your Quarto website pages, you may want
 used_there("https://www.quantumjitter.com/project/")
 ```
 
-[Favourite Things](https://www.quantumjitter.com/project/box/) shows an example analysis which takes the tibble output from `used_there()` augments these data with a category, and plots the most-used packages, the most-used functions and a word-cloud.
+[Favourite Things](https://www.quantumjitter.com/project/box/) shows an example analysis which takes the tibble output from `used_there()`, augments these data with a category, and plots the most-used packages, the most-used functions and a word cloud.
