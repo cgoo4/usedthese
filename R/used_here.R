@@ -1,4 +1,4 @@
-#' Summarise function usage here
+#' Summarise function usage in a single document
 #'
 #' Consistent with knitr syntax highlighting, [used_here()] adds a
 #' summary table of R package & function usage to a knitted Quarto or R Markdown document

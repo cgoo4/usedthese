@@ -20,8 +20,8 @@ usage in Quarto documents consistent with knitr’s syntax highlighting:
 1.  `used_here()` adds a nicely-rendered summary table of usage to a
     single document;
 
-2.  `used_there()` harvests the tables created above to aggregate usage
-    for a website ready for analysis;
+2.  `used_there()` harvests and consolidates the tables created above
+    ready for site-wide analysis;
 
 3.  `used_elsewhere()` harvests tables for opted-in websites to enable
     analysis of a broader view of usage \[Planned\];
@@ -38,9 +38,9 @@ data. At the foot of each of these is a quantified view of the R
 packages and functions used in the associated code. This is achieved by
 including `used_here()` in each Quarto document.
 
-`used_there()` harvests all the tables created by `used_here()` to
-enable a [Favourite Things](https://www.quantumjitter.com/project/box/)
-article on how R packages and functions are used across the website.
+`used_there()` scrapes all the tables created by `used_here()` to enable
+a [Favourite Things](https://www.quantumjitter.com/project/box/) article
+on how R packages and functions are used across the website.
 
 I personally find this approach makes it easier for me to check for
 consistency of usage, acknowledge the packages I most need to keep

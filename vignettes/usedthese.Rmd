@@ -1,10 +1,10 @@
 ---
-title: "Document usage"
+title: "Getting Started"
 description: | 
   Add a summary of R package & function usage to a Quarto document.
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Document usage}
+  %\VignetteIndexEntry{Getting Started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,18 +16,20 @@ knitr::opts_chunk$set(
 )
 ```
 
-In the example below, `tribble()` is counted once against the (originating) tibble package even though it is also loaded by dplyr. And `used_here()` assumes a loaded function is used rather than a base function of the same name, so `dplyr::filter()`, for example, is counted rather than `stats::filter()`.
+To add a summary table of package & function usage to the foot of a Quarto document, add `used_here()` to the end of the code. A separate code chunk with an appropriate heading is suggested but not essential.
 
-Both the dplyr and xts packages have `first()` and `last()` functions. Because we've explicitly excluded `first()` in the library call for xts, the function is counted against dplyr. However, as there is no similar exclusion for `last()`, this is shown against both packages as a DUPE; a decision needs to be made as to which should be excluded. (`library()` can take an `exclude` character vector or an `include.only` vector.)
-
-The rendered table is assigned the CSS class `.usedthese` to help other `used_*` functions find and aggregate multiple tables across one or more websites.
+## Some code
 
 ```{r setup}
 options(tidyverse.quiet = TRUE)
 library(tidyverse) 
 library(usedthese)
 library(xts, exclude = "first")
+```
 
+## More code
+
+```{r}
 tribble(~group, ~a1, ~a2, ~b1,
         "x", 1, 2, 3,
         "x", 4, 5, 6,
@@ -36,6 +38,16 @@ tribble(~group, ~a1, ~a2, ~b1,
   filter(group == "x") |> 
   mutate(first_a1 = first(a1),
          last_a2 = last(a2))
+```
 
+## Summary of usage
+
+In the example below, `tribble()` is counted once against the (originating) tibble package even though it is also loaded by dplyr. And `used_here()` assumes a loaded function is used rather than a base function of the same name, so `dplyr::filter()`, for example, is counted rather than `stats::filter()`.
+
+Both the dplyr and xts packages have `first()` and `last()` functions. Because we've explicitly excluded `first()` in the library call for xts, the function is counted against dplyr. However, as there is no similar exclusion for `last()`, this is shown against both packages as a DUPE; a decision needs to be made as to which should be excluded. (`library()` can take an `exclude` character vector or an `include.only` vector.)
+
+The rendered table is assigned the CSS class `.usedthese` to help other `used_*` functions find and aggregate multiple tables across one or more websites.
+
+```{r}
 used_here()
 ```

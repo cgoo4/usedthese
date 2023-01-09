@@ -1,4 +1,4 @@
-#' Aggregate multi-table usage
+#' Scrape the summaries for site-wide analysis
 #'
 #' Harvests and aggregates the function usage tables from multiple pages in a website
 #'
