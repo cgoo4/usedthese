@@ -20,7 +20,7 @@ Suggests:
 Config/testthat/edition: 3
 RoxygenNote: 7.2.3
 Imports: 
-    dplyr (>= 1.0.99.9000),
+    dplyr,
     highr,
     httr,
     kableExtra,

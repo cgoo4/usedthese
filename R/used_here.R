@@ -73,14 +73,13 @@ used_here <- \(fil = knitr::current_input()) {
   funs_augmented <- funs_loaded |>
     dplyr::left_join(
       funs_origin,
-      dplyr::join_by(pckg_loaded == pckg_loaded, func == func)
+      c("pckg_loaded", "func")
     ) |>
     dplyr::mutate(base = dplyr::if_else(pckg_loaded %in% pckg_base, 1L, 0L)) |>
     dplyr::group_by(func) |>
     dplyr::filter(base == base::min(base)) |>
     tidyr::fill(pckg_origin, .direction = "updown") |>
     dplyr::mutate(n = dplyr::n(),
-                  # pckg_loaded = dplyr::if_else(n > 1, pckg_origin, pckg_loaded)
                   pckg_loaded =
                     dplyr::if_else(
                       n > 1 & is.na(pckg_origin),
@@ -108,7 +107,9 @@ used_here <- \(fil = knitr::current_input()) {
     purrr::list_rbind() |>
     dplyr::filter(total > 0) |>
     dplyr::mutate(func = stringr::str_c(func, "[", total, "]")) |>
-    dplyr::summarise(func = stringr::str_c(func, collapse = ";  "), .by = pckg) |>
+    dplyr::group_by(pckg) |>
+    dplyr::summarise(func = stringr::str_c(func, collapse = ";  ")) |>
+    dplyr::ungroup() |>
     dplyr::arrange(pckg)
 
   funs_used |>
