@@ -2,6 +2,7 @@
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
-Covered the three major operating systems and both the released and development versions of R.
-
 * This is a new release.
+* Fixed spelling ('knitr' now in quotes)
+* Fixed DESCRIPTION & CITATION url
+* Changed Depends to R (>= 4.1): Pipe was added then
