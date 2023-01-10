@@ -34,7 +34,7 @@ Imports:
     tidyr,
     withr
 Depends: 
-    R (>= 4.1.0)
+    R (>= 4.1)
 URL: https://cgoo4.github.io/usedthese/
 BugReports: https://github.com/cgoo4/usedthese/issues
 VignetteBuilder: knitr
