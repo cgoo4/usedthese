@@ -4,7 +4,7 @@ Title: Summarises Package & Function Usage
 Version: 0.1.0
 Authors@R: person("Carl", "Goodwin", email = "carl.goodwin@quantumjitter.com",
   role = c("aut", "cre"))
-Description: Consistent with knitr syntax highlighting, 'usedthese' adds a
+Description: Consistent with 'knitr' syntax highlighting, 'usedthese' adds a
     summary table of R package & function usage to a Quarto document and 
     enables aggregation of usage across a Quarto website.
 Language: en-GB
@@ -34,9 +34,8 @@ Imports:
     tidyr,
     withr
 Depends: 
-    R (>= 2.10)
-URL: https://github.com/cgoo4/usedthese,
-    https://cgoo4.github.io/usedthese/
+    R (>= 4.1.0)
+URL: https://cgoo4.github.io/usedthese/
 BugReports: https://github.com/cgoo4/usedthese/issues
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
