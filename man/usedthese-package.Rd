@@ -8,12 +8,11 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Consistent with knitr syntax highlighting, 'usedthese' adds a summary table of R package & function usage to a Quarto document and enables aggregation of usage across a Quarto website.
+Consistent with 'knitr' syntax highlighting, 'usedthese' adds a summary table of R package & function usage to a Quarto document and enables aggregation of usage across a Quarto website.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/cgoo4/usedthese}
   \item \url{https://cgoo4.github.io/usedthese/}
   \item Report bugs at \url{https://github.com/cgoo4/usedthese/issues}
 }

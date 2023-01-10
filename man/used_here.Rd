@@ -7,10 +7,10 @@
 used_here(fil = knitr::current_input())
 }
 \arguments{
-\item{fil}{If the usage summary is required in the document you are currently knitting the current document, it is not necessary to specify
+\item{fil}{If the usage summary is required in the document you are currently knitting,
 then no argument need be specified.
 
-If you want to create the summary by running the code chunk directly, then it is necessary to
+If you want to create a summary by running just the code chunk, then it is necessary to
 specify the quoted name of the saved file. This would also be the case if the usage summary
 is required in, say, a blog post that's summarising the code in some other file.}
 }
