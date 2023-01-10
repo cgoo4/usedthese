@@ -4,11 +4,14 @@
 \alias{used_there}
 \title{Scrape the summaries for site-wide analysis}
 \usage{
-used_there(url)
+used_there(url, num_links = 20)
 }
 \arguments{
 \item{url}{The url to the website listing page of posts containing usage tables created with
 \code{\link[=used_here]{used_here()}}}
+
+\item{num_links}{The number of links returned from the listing page may be restricted using
+this argument. Defaults to 20.}
 }
 \value{
 A tibble summarising package & function usage
@@ -18,6 +21,6 @@ Harvests and aggregates the function usage tables from multiple pages in a websi
 }
 \examples{
 # Uses a Quarto listing url to aggregate usage across website pages
-used_there("https://www.quantumjitter.com/project/")
+used_there("https://www.quantumjitter.com/project/", 1)
 
 }

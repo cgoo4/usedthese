@@ -1,15 +1,15 @@
-test_that("first 3 lines", {
+test_that("First 3 lines of the first link", {
   expect_equal(
-    used_there("https://quantumjitter.com/project") |> head(3),
+    used_there("https://quantumjitter.com/project", 1) |> head(3),
     tibble(
-      Package = c("DT", "R.utils", "RColorBrewer"),
-      Function = c("datatable", "gunzip", "brewer.pal"),
+      Package = c("base", "base", "base"),
+      Function = c("as.character", "as.integer", "c"),
       url = c(
-        "https://quantumjitter.com/project/planning/",
-        "https://quantumjitter.com/project/stories/",
-        "https://quantumjitter.com/project/bands/"
+        "https://quantumjitter.com/project/footnote/",
+        "https://quantumjitter.com/project/footnote/",
+        "https://quantumjitter.com/project/footnote/"
       ),
-      n = c(1, 1, 1)
+      n = c(1, 1, 8)
     )
   )
 })

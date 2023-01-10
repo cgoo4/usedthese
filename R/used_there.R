@@ -5,15 +5,18 @@
 #' @param url The url to the website listing page of posts containing usage tables created with
 #' [used_here()]
 #'
+#' @param num_links The number of links returned from the listing page may be restricted using
+#' this argument. Defaults to 20.
+#'
 #' @return A tibble summarising package & function usage
 #'
 #' @export
 #'
 #' @examples
 #' # Uses a Quarto listing url to aggregate usage across website pages
-#' used_there("https://www.quantumjitter.com/project/")
+#' used_there("https://www.quantumjitter.com/project/", 1)
 #'
-used_there <- \(url) {
+used_there <- \(url, num_links = 20) {
   urls <- url |>
     rvest::read_html() |>
     rvest::html_elements(".quarto-grid-link ,
@@ -27,6 +30,9 @@ used_there <- \(url) {
       value
     )) |>
     dplyr::pull()
+
+  if (num_links < length(urls))
+    urls <- urls[1:num_links]
 
   table_df <- purrr::map(urls, \(x) {
     x |>
