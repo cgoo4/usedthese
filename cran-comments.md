@@ -2,7 +2,9 @@
 
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
-* This is a new release.
-* Fixed spelling ('knitr' now in quotes)
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Fixed spelling: 'knitr' now in quotes (as it's a package name)
 * Fixed DESCRIPTION & CITATION url
-* Changed Depends to R (>= 4.1): Pipe was added then
+* Changed Depends to R (>= 4.1): Pipe added in this release
