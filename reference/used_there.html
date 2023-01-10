@@ -60,7 +60,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">used_there</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">used_there</span><span class="op">(</span><span class="va">url</span>, num_links <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -68,6 +68,11 @@
     <dl><dt>url</dt>
 <dd><p>The url to the website listing page of posts containing usage tables created with
 <code><a href="used_here.html">used_here()</a></code></p></dd>
+
+
+<dt>num_links</dt>
+<dd><p>The number of links returned from the listing page may be restricted using
+this argument. Defaults to 20.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -80,21 +85,21 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Uses a Quarto listing url to aggregate usage across website pages</span></span></span>
-<span class="r-in"><span><span class="fu">used_there</span><span class="op">(</span><span class="st">"https://www.quantumjitter.com/project/"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,244 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Package      Function   url                                                 n</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> DT           datatable  https://www.quantumjitter.com/project/planning/     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> R.utils      gunzip     https://www.quantumjitter.com/project/stories/      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> RColorBrewer brewer.pal https://www.quantumjitter.com/project/bands/        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> SPARQL       SPARQL     https://www.quantumjitter.com/project/bands/        1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> SPARQL       SPARQL     https://www.quantumjitter.com/project/planning/     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> SPARQL       SPARQL     https://www.quantumjitter.com/project/sw10/         1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> base         abbreviate https://www.quantumjitter.com/project/sets/         1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> base         as.Date    https://www.quantumjitter.com/project/deal/         2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> base         as.Date    https://www.quantumjitter.com/project/jitter/       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> base         as.Date    https://www.quantumjitter.com/project/sw10/         1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1,234 more rows</span></span>
+<span class="r-in"><span><span class="fu">used_there</span><span class="op">(</span><span class="st">"https://www.quantumjitter.com/project/"</span>, <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 65 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Package Function     url                                                 n</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> base    as.character https://www.quantumjitter.com/project/footnote/     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> base    as.integer   https://www.quantumjitter.com/project/footnote/     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> base    c            https://www.quantumjitter.com/project/footnote/     8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> base    is.na        https://www.quantumjitter.com/project/footnote/     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> base    library      https://www.quantumjitter.com/project/footnote/     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> base    list         https://www.quantumjitter.com/project/footnote/     5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> dplyr   arrange      https://www.quantumjitter.com/project/footnote/     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> dplyr   desc         https://www.quantumjitter.com/project/footnote/     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> dplyr   filter       https://www.quantumjitter.com/project/footnote/     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> dplyr   if_else      https://www.quantumjitter.com/project/footnote/     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 55 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
