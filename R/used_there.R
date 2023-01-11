@@ -16,40 +16,33 @@
 #' # Uses a Quarto listing url to aggregate usage across website pages
 #' used_there("https://www.quantumjitter.com/project/", 1)
 #'
-used_there <- \(url, num_links = 20) {
+used_there <- \(url, num_links = 20){
   urls <- url |>
     rvest::read_html() |>
     rvest::html_elements(".quarto-grid-link ,
                          .quarto-default-link ,
                          .quarto-table-link") |>
-    rvest::html_attr("href") |>
-    tibble::as_tibble() |>
-    dplyr::transmute(stringr::str_c(
-      "https://",
-      httr::parse_url(url)$hostname,
-      value
-    )) |>
-    dplyr::pull()
+    rvest::html_attr("href")
 
-  if (num_links < length(urls))
+  if (num_links < length(urls)) {
     urls <- urls[1:num_links]
+  }
 
-  table_df <- purrr::map(urls, \(x) {
-    x |>
+  purrr::map(urls, \(x) {
+    stringr::str_c(
+      httr::parse_url(url)$scheme, "://",
+      httr::parse_url(url)$hostname, x
+    ) |>
       rvest::read_html() |>
       rvest::html_element(".usedthese") |>
       rvest::html_table() |>
       dplyr::mutate(url = x)
   }) |>
     purrr::list_flatten() |>
-    purrr::list_rbind()
-
-  table_df |>
+    purrr::list_rbind() |>
     tidyr::separate_rows(Function, sep = ";") |>
-    tidyr::separate(Function, c("Function", "count"), "\\Q[\\E") |>
-    dplyr::mutate(
-      count = stringr::str_remove(count, "]") |> as.integer(),
-      Function = stringr::str_squish(Function)
-    ) |>
-    dplyr::count(Package, Function, url, wt = count)
+    tidyr::extract(Function, c("Function", "n"),
+                   "([^ ]+)\\[(.+)\\]",
+                   convert = TRUE
+    )
 }
