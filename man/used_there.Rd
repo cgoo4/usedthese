@@ -21,6 +21,6 @@ Harvests and aggregates the function usage tables from multiple pages in a websi
 }
 \examples{
 # Uses a Quarto listing url to aggregate usage across website pages
-used_there("https://www.quantumjitter.com/project/", 1)
+# used_there("https://www.quantumjitter.com/project/", 1)
 
 }

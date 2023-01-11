@@ -14,25 +14,25 @@
 #'
 #' @examples
 #' # Uses a Quarto listing url to aggregate usage across website pages
-#' used_there("https://www.quantumjitter.com/project/", 1)
+#' # used_there("https://www.quantumjitter.com/project/", 1)
 #'
-used_there <- \(url, num_links = 20){
+used_there <- \(url, num_links = 20) {
   urls <- url |>
     rvest::read_html() |>
     rvest::html_elements(".quarto-grid-link ,
                          .quarto-default-link ,
                          .quarto-table-link") |>
-    rvest::html_attr("href")
-
-  if (num_links < length(urls)) {
-    urls <- urls[1:num_links]
-  }
+    rvest::html_attr("href") |>
+    stringr::str_replace("^",
+                         stringr::str_c(
+                           httr::parse_url(url)$scheme, "://",
+                           httr::parse_url(url)$hostname
+                         )
+    ) |>
+    utils::head(num_links)
 
   purrr::map(urls, \(x) {
-    stringr::str_c(
-      httr::parse_url(url)$scheme, "://",
-      httr::parse_url(url)$hostname, x
-    ) |>
+    x |>
       rvest::read_html() |>
       rvest::html_element(".usedthese") |>
       rvest::html_table() |>
@@ -43,6 +43,5 @@ used_there <- \(url, num_links = 20){
     tidyr::separate_rows(Function, sep = ";") |>
     tidyr::extract(Function, c("Function", "n"),
                    "([^ ]+)\\[(.+)\\]",
-                   convert = TRUE
-    )
+                   convert = TRUE)
 }
