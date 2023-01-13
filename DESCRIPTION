@@ -6,7 +6,8 @@ Authors@R: person("Carl", "Goodwin", email = "carl.goodwin@quantumjitter.com",
   role = c("aut", "cre"))
 Description: Consistent with 'knitr' syntax highlighting, 'usedthese' adds a
     summary table of R package & function usage to a Quarto document and 
-    enables aggregation of usage across a Quarto website.
+    enables aggregation of usage across a Quarto website. Learn more about
+    'usedthese' at <https://cgoo4.github.io/usedthese/>.
 Language: en-GB
 License: MIT + file LICENSE
 Encoding: UTF-8

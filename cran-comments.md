@@ -3,7 +3,13 @@
 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
 ## Resubmission
-This is a resubmission. In this version I have:
+In this version I have:
+
+* Added an "https:" reference with angle brackets to the description field
+* Wrapped `used_there` example in `\donttest{}`: Averages 350 milliseconds elapsed on local machine, but may just break the 5 seconds on the test machine)
+* Uncommented the `used_here` example
+
+Previous version:
 
 * Improved function performance
 * Fixed spelling: 'knitr' now in quotes (as it's a package name)

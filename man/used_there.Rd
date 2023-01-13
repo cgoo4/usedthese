@@ -17,10 +17,11 @@ this argument. Defaults to 20.}
 A tibble summarising package & function usage
 }
 \description{
-Harvests and aggregates the function usage tables from multiple pages in a website
+Harvests and consolidates function usage tables from pages of a Quarto website
+by searching for tables with the CSS class "usedthese"
 }
 \examples{
-# Uses a Quarto listing url to aggregate usage across website pages
-# used_there("https://www.quantumjitter.com/project/", 1)
+# Uses a Quarto listing url to scrape & consolidate usage
+\donttest{used_there("https://www.quantumjitter.com/project/", 1)}
 
 }

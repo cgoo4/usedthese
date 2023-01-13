@@ -28,12 +28,8 @@ be due to a conflict \code{\link[=used_here]{used_here()}} was unable to resolve
 call of the unwanted version.
 }
 \examples{
-# Simple example -- see Get Started for an extended example
-mean(c(1, 2, 3))
-sum(c(1, 2, 3))
-
-# used_here()
-# Package Function
-# base    c[2];  mean[1];  sum[1]
+# Simple example which mimics a two-line script and creates
+# an html table with a CSS class "usedthese"
+usedthese::used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
 
 }
