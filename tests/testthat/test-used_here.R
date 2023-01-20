@@ -53,3 +53,5 @@ test_that("Conflicts", {
       kableExtra::kable_styling("striped")
   )
 })
+
+unlink("~/R Projects/usedthese/tests/testthat/usedthese.R")
