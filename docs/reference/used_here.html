@@ -72,8 +72,8 @@ summary table of R package &amp; function usage to a knitted Quarto or R Markdow
 <dd><p>If the usage summary is required in the document you are currently knitting,
 then no argument need be specified.</p>
 <p>If you want to create a summary by running just the code chunk, then it is necessary to
-specify the quoted name of the saved file. This would also be the case if the usage summary
-is required in, say, a blog post that's summarising the code in some other file.</p></dd>
+specify the quoted name of the saved file. You should first load and attach the packages
+used in a fresh R session.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -84,10 +84,9 @@ is required in, say, a blog post that's summarising the code in some other file.
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>If the rendered summary includes rows where the package name is prefixed with "DUPE", this will
-be due to a conflict <code>used_here()</code> was unable to resolve, e.g. <code><a href="https://dplyr.tidyverse.org/reference/nth.html" class="external-link">dplyr::first()</a></code> versus
-<code><a href="https://rdrr.io/pkg/xts/man/first.html" class="external-link">xts::first()</a></code>. In such cases, the recommendation is to add "exclude = first" to the library
-call of the unwanted version.</p>
+    <p>If the rendered summary includes rows where the package name is multiple packages
+separated by a comma, this will be due to an unresolved conflict. The recommended approach
+is to use the 'conflicted' package.</p>
     </div>
 
     <div class="section level2">
@@ -105,7 +104,7 @@ call of the unwanted version.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;tbody&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; base &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; c[2];  mean[1];  sum[1] &lt;/td&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; c[2], mean[1], sum[1] &lt;/td&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/tbody&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/table&gt;</span>

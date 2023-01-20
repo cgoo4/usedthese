@@ -12,6 +12,8 @@ utils::globalVariables(
     "desc",
     "Function",
     "Package",
-    "packfun"
+    "packfun",
+    "pckg_preferred",
+    "pckgx"
   )
 )

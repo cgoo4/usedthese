@@ -11,8 +11,8 @@ used_here(fil = knitr::current_input())
 then no argument need be specified.
 
 If you want to create a summary by running just the code chunk, then it is necessary to
-specify the quoted name of the saved file. This would also be the case if the usage summary
-is required in, say, a blog post that's summarising the code in some other file.}
+specify the quoted name of the saved file. You should first load and attach the packages
+used in a fresh R session.}
 }
 \value{
 A printed kable table with the css class "usedthese"
@@ -22,10 +22,9 @@ Consistent with knitr syntax highlighting, \code{\link[=used_here]{used_here()}}
 summary table of R package & function usage to a knitted Quarto or R Markdown document
 }
 \details{
-If the rendered summary includes rows where the package name is prefixed with "DUPE", this will
-be due to a conflict \code{\link[=used_here]{used_here()}} was unable to resolve, e.g. \code{\link[dplyr:nth]{dplyr::first()}} versus
-\code{\link[xts:first]{xts::first()}}. In such cases, the recommendation is to add "exclude = first" to the library
-call of the unwanted version.
+If the rendered summary includes rows where the package name is multiple packages
+separated by a comma, this will be due to an unresolved conflict. The recommended approach
+is to use the 'conflicted' package.
 }
 \examples{
 # Simple example which mimics a two-line script and creates

@@ -22,6 +22,7 @@ Suggests:
 Config/testthat/edition: 3
 RoxygenNote: 7.2.3
 Imports: 
+    conflicted,
     dplyr,
     highr,
     httr,
@@ -34,6 +35,7 @@ Imports:
     stringr,
     tibble,
     tidyr,
+    tidyselect,
     withr
 Depends: 
     R (>= 4.1)

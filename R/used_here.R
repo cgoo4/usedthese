@@ -3,17 +3,16 @@
 #' Consistent with knitr syntax highlighting, [used_here()] adds a
 #' summary table of R package & function usage to a knitted Quarto or R Markdown document
 #'
-#' @details If the rendered summary includes rows where the package name is prefixed with "DUPE", this will
-#' be due to a conflict [used_here()] was unable to resolve, e.g. [dplyr::first()] versus
-#' [xts::first()]. In such cases, the recommendation is to add "exclude = first" to the library
-#' call of the unwanted version.
+#' @details If the rendered summary includes rows where the package name is multiple packages
+#' separated by a comma, this will be due to an unresolved conflict. The recommended approach
+#' is to use the 'conflicted' package.
 #'
 #' @param fil If the usage summary is required in the document you are currently knitting,
 #' then no argument need be specified.
 #'
 #' If you want to create a summary by running just the code chunk, then it is necessary to
-#' specify the quoted name of the saved file. This would also be the case if the usage summary
-#' is required in, say, a blog post that's summarising the code in some other file.
+#' specify the quoted name of the saved file. You should first load and attach the packages
+#' used in a fresh R session.
 #'
 #' @return A printed kable table with the css class "usedthese"
 #'
@@ -25,16 +24,21 @@
 #' usedthese::used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))")
 #'
 used_here <- \(fil = knitr::current_input()) {
-
   if (is.null(fil)) {
-    rlang::abort("The fil argument must either be a quoted Quarto/R Markdown filename or, if left unspecified, must be the document you are currently knitting, e.g. you clicked the Render button.", "used_here_error", fil = fil)
+    rlang::abort(
+      "If you are knitting the current document, i.e. you clicked the Render button, then leave fil unspecified. If you are running the code chunks, then ensure you library the packages first in a fresh R session and specify the saved filename.",
+      fil = fil
+    )
   }
 
   old <- options(knitr.duplicate.label = "allow")
   withr::defer(options(old))
 
   if (stringr::str_ends(fil, "Rmd|qmd|rmarkdown")) {
-    purrr::walk(fil, knitr::purl, quiet = TRUE, documentation = 0)
+    purrr::walk(fil,
+                knitr::purl,
+                quiet = TRUE,
+                documentation = 0)
 
     fil <- stringr::str_replace(fil, "Rmd|qmd|rmarkdown", "R")
   }
@@ -57,56 +61,65 @@ used_here <- \(fil = knitr::current_input()) {
     dplyr::rename(func = value) |>
     dplyr::distinct()
 
-  pckg_base <-
-    c("stats",
-      "graphics",
-      "grDevices",
-      "utils",
-      "datasets",
-      "methods",
-      "base")
+  funs_scouted <- dplyr::bind_rows(
+    conflicted::conflict_scout() |> purrr::map(1) |> tibble::as_tibble(),
+    conflicted::conflict_scout() |> purrr::map(2) |> purrr::discard(is.null) |> tibble::as_tibble()
+  )
+
+  if (nrow(funs_scouted) * ncol(funs_scouted) > 0)
+
+  {
+  funs_scouted <- funs_scouted |>
+    tidyr::pivot_longer(
+      cols = tidyselect::everything(),
+      names_to = "func",
+      values_to = "pckg"
+    ) |>
+    dplyr::group_by(func) |>
+    dplyr::summarise(pckg_preferred = stringr::str_flatten_comma(pckg, na.rm = TRUE)) |>
+    dplyr::ungroup()
+  }
+
+  else
+
+  {
+    funs_scouted <- tibble::tibble(pckg_preferred = "zzz", func = "zzz")
+  }
 
   funs_augmented <- funs_loaded |>
-    dplyr::left_join(
-      funs_origin,
-      c("pckg_loaded", "func")
-    ) |>
-    dplyr::mutate(base = dplyr::if_else(pckg_loaded %in% pckg_base, 1L, 0L)) |>
+    dplyr::left_join(funs_origin,
+                     c("pckg_loaded", "func")) |>
+    dplyr::left_join(funs_scouted,
+                     c("func")) |>
     dplyr::group_by(func) |>
-    dplyr::filter(base == base::min(base)) |>
     tidyr::fill(pckg_origin, .direction = "updown") |>
-    dplyr::mutate(n = dplyr::n(),
-                  pckg_loaded =
-                    dplyr::if_else(
-                      n > 1 & is.na(pckg_origin),
-                      stringr::str_c("[DUPE]", pckg_loaded),
-                      dplyr::if_else(n > 1 &
-                                !is.na(pckg_origin), pckg_origin, pckg_loaded)
-                    )) |>
-    dplyr::select(pckg = pckg_loaded, func) |>
+    dplyr::mutate(
+      pckg_loaded = dplyr::coalesce(pckg_origin, pckg_loaded),
+      pckg_loaded = dplyr::coalesce(pckg_preferred, pckg_loaded)
+    ) |>
+    dplyr::select(pckgx = pckg_loaded, func) |> ####
     dplyr::distinct()
 
   funs_coded <- fil |>
     readr::read_lines() |>
     highr::hi_latex(fallback = TRUE) |>
-    stringr::str_extract_all("(?<=kwd\\{)[^\\{\\}]*(?=\\})") |>
-    purrr::list_c()
+    stringr::str_extract_all("([a-zA-Z_]+::)?\\\\hlkwd\\{([^\\{\\}]*(?=\\}))") |>
+    purrr::list_c() |>
+    tibble::as_tibble() |>
+    tidyr::separate(value, into = c("pckg", "func"), sep = "\\\\hlkwd{") |>
+    dplyr::mutate(pckg = stringr::str_remove(pckg, "::")) |>
+    dplyr::mutate(pckg = dplyr::na_if(pckg, ""))
 
   funs_used <-
-    purrr::map2(funs_augmented$func, funs_augmented$pckg, \(i, j) {
-      tibble::tibble(
-        pckg = j,
-        func = i,
-        total = funs_coded |> stringr::str_count(stringr::str_c("^\\Q", i, "\\E$")) |> base::sum()
-      )
-    }) |>
-    purrr::list_rbind() |>
-    dplyr::filter(total > 0) |>
-    dplyr::mutate(func = stringr::str_c(func, "[", total, "]")) |>
+    funs_coded |>
+    dplyr::left_join(funs_augmented, by = "func") |>
+    dplyr::mutate(pckg = dplyr::coalesce(pckg, pckgx)) |>
+    dplyr::count(pckg, func) |>
+    dplyr::mutate(func = stringr::str_c(func, "[", n, "]")) |>
     dplyr::group_by(pckg) |>
-    dplyr::summarise(func = stringr::str_c(func, collapse = ";  ")) |>
+    dplyr::summarise(func = stringr::str_c(func, collapse = ", ")) |>
     dplyr::ungroup() |>
-    dplyr::arrange(pckg)
+    tidyr::drop_na()
 
   funs_used |>
     knitr::kable(
