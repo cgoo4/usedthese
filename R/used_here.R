@@ -35,10 +35,7 @@ used_here <- \(fil = knitr::current_input()) {
   withr::defer(options(old))
 
   if (stringr::str_ends(fil, "Rmd|qmd|rmarkdown")) {
-    purrr::walk(fil,
-                knitr::purl,
-                quiet = TRUE,
-                documentation = 0)
+    purrr::walk(fil, knitr::purl, quiet = TRUE, documentation = 0)
 
     fil <- stringr::str_replace(fil, "Rmd|qmd|rmarkdown", "R")
   }
@@ -51,6 +48,11 @@ used_here <- \(fil = knitr::current_input()) {
     tibble::enframe("pckg_loaded", "func") |>
     tidyr::unnest(cols = func)
 
+  get_mode <- \(x) {
+    ux <- unique(x)
+    ux[which.max(tabulate(match(x, ux)))]
+  }
+
   funs_origin <- pckg_loaded |>
     purrr::map(getNamespaceImports) |>
     purrr::list_flatten() |>
@@ -59,30 +61,24 @@ used_here <- \(fil = knitr::current_input()) {
     tidyr::unnest(value) |>
     tidyr::separate(name, into = c("pckg_loaded", "pckg_origin")) |>
     dplyr::rename(func = value) |>
+    dplyr::group_by(func) |>
+    dplyr::mutate(pckg_origin = get_mode(pckg_origin)) |>
+    dplyr::ungroup() |>
     dplyr::distinct()
 
-  funs_scouted <- dplyr::bind_rows(
-    conflicted::conflict_scout() |> purrr::map(1) |> tibble::as_tibble(),
-    conflicted::conflict_scout() |> purrr::map(2) |> purrr::discard(is.null) |> tibble::as_tibble()
-  )
+  funs_scouted <- conflicted::conflict_scout() |>
+    purrr::transpose() |>
+    purrr::list_flatten() |>
+    purrr::discard(is.null) |>
+    tibble::as_tibble(.name_repair = "minimal")
 
-  if (nrow(funs_scouted) * ncol(funs_scouted) > 0)
-
-  {
-  funs_scouted <- funs_scouted |>
-    tidyr::pivot_longer(
-      cols = tidyselect::everything(),
-      names_to = "func",
-      values_to = "pckg"
-    ) |>
-    dplyr::group_by(func) |>
-    dplyr::summarise(pckg_preferred = stringr::str_flatten_comma(pckg, na.rm = TRUE)) |>
-    dplyr::ungroup()
-  }
-
-  else
-
-  {
+  if (nrow(funs_scouted) > 0) {
+    funs_scouted <- funs_scouted |>
+      tidyr::pivot_longer(tidyselect::everything(), names_to = "func") |>
+      dplyr::group_by(func) |>
+      dplyr::summarise(pckg_preferred = stringr::str_flatten_comma(value, na.rm = TRUE)) |>
+      dplyr::ungroup()
+  } else {
     funs_scouted <- tibble::tibble(pckg_preferred = "zzz", func = "zzz")
   }
 

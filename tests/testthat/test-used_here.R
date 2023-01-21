@@ -6,20 +6,6 @@ test_that("File Error", {
   )
 })
 
-# test_that("Quoted File", {
-#   expect_equal(
-#     usedthese::used_here("~/R Projects/usedthese/vignettes/usedthese.Rmd"),
-#     tibble::tibble(
-#       Package = c("base", "stats", "usedthese"),
-#       Function = c("library[4], options[1]",
-#                    "filter[1]",
-#                    "used_here[1]")
-#     ) |>
-#       knitr::kable(format = "html", table.attr = "class = 'usedthese'") |>
-#       kableExtra::kable_styling("striped")
-#   )
-# })
-
 test_that("No Conflicts", {
   expect_equal(
     used_here("mean(c(1, 2, 3))\nsum(c(1, 2, 3))"),
@@ -53,5 +39,3 @@ test_that("Conflicts", {
       kableExtra::kable_styling("striped")
   )
 })
-
-# unlink("~/R Projects/usedthese/tests/testthat/usedthese.R")
