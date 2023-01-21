@@ -1,6 +1,8 @@
 # usedthese 0.2.0
 
-* Add support for the conflicted package
+* Support use of the conflicted package
+* Include functions using the double-colon operator
+* Resolve cases of a function counted against two packages
 
 # usedthese 0.1.0
 
