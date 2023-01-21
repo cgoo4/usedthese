@@ -93,8 +93,9 @@ used_here <- \(fil = knitr::current_input()) {
       pckg_loaded = dplyr::coalesce(pckg_origin, pckg_loaded),
       pckg_loaded = dplyr::coalesce(pckg_preferred, pckg_loaded)
     ) |>
-    dplyr::select(pckgx = pckg_loaded, func) |> ####
-    dplyr::distinct()
+    dplyr::select(pckgx = pckg_loaded, func) |>
+    dplyr::arrange(func, pckgx) |>
+    dplyr::distinct(func, .keep_all = TRUE)
 
   funs_coded <- fil |>
     readr::read_lines() |>
