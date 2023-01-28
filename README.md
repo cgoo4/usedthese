@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# usedthese <a href="https://cgoo4.github.io/usedthese/"><img src="man/figures/logo.png" align="right" height="138" /></a>
+# usedthese <a href="https://cgoo4.github.io/usedthese/"><img src="man/figures/logo.png" align="right" height="138"/></a>
 
 <!-- badges: start -->
 
@@ -12,6 +12,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 coverage](https://codecov.io/gh/cgoo4/usedthese/branch/master/graph/badge.svg)](https://app.codecov.io/gh/cgoo4/usedthese?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/usedthese)](https://CRAN.R-project.org/package=usedthese)
+
 <!-- badges: end -->
 
 ## Overview
@@ -59,6 +60,12 @@ dplyr introduced temporary grouping with the `.by` argument for mutate
 and amigos. `group_by()` and `ungroup()` had been used many times and
 most of these occurrences could be replaced with the new more concise
 approach.
+
+There’s a nice additional benefit too. Quarto websites have a search
+bar. And whilst the results *exclude* code, they *include* the contents
+of the usage table. So, for example, if you search
+[quantumjitter.com](https://www.quantumjitter.com/project/) for
+“separate_wider_regex” you can find any project using that function.
 
 ## Installation
 
