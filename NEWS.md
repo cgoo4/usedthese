@@ -1,6 +1,6 @@
 # usedthese 0.2.0.9000
 
-* Development version
+* Update for dplyr 1.1 and tidyr 1.3
 
 # usedthese 0.2.0
 

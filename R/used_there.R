@@ -41,7 +41,7 @@ used_there <- \(url, num_links = 20) {
   }) |>
     purrr::list_flatten() |>
     purrr::list_rbind() |>
-    tidyr::separate_rows(Function, sep = ",") |>
+    tidyr::separate_longer_delim(Function, delim = ",") |>
     tidyr::extract(Function, c("Function", "n"),
                    "([^ ]+)\\[(.+)\\]",
                    convert = TRUE)

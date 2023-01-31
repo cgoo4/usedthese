@@ -13,3 +13,5 @@ purrr
 quantumjitter
 tibble
 xts
+regex
+tidyr

@@ -2,7 +2,7 @@
 test_that("File Error", {
   expect_error(
     used_here(),
-    "If you are knitting the current document, i.e. you clicked the Render button, then leave fil unspecified. If you are running the code chunks, then ensure you library the packages first in a fresh R session and specify the saved filename.",
+    "If you are knitting the current document, i.e. you clicked the Render button, then leave fil unspecified. If you are running the code chunks, then ensure you library the packages first in a fresh R session and specify the saved filename quoted."
   )
 })
 

@@ -26,7 +26,7 @@
 used_here <- \(fil = knitr::current_input()) {
   if (is.null(fil)) {
     rlang::abort(
-      "If you are knitting the current document, i.e. you clicked the Render button, then leave fil unspecified. If you are running the code chunks, then ensure you library the packages first in a fresh R session and specify the saved filename.",
+      "If you are knitting the current document, i.e. you clicked the Render button, then leave fil unspecified. If you are running the code chunks, then ensure you library the packages first in a fresh R session and specify the saved filename quoted.",
       fil = fil
     )
   }
@@ -46,7 +46,7 @@ used_here <- \(fil = knitr::current_input()) {
   funs_loaded <- pckg_loaded |>
     purrr::map(\(x) base::ls(stringr::str_c("package:", x))) |>
     tibble::enframe("pckg_loaded", "func") |>
-    tidyr::unnest(cols = func)
+    tidyr::unnest(func)
 
   get_mode <- \(x) {
     ux <- unique(x)
@@ -59,34 +59,27 @@ used_here <- \(fil = knitr::current_input()) {
     tibble::enframe() |>
     dplyr::filter(value != "TRUE") |>
     tidyr::unnest(value) |>
-    tidyr::separate(name, into = c("pckg_loaded", "pckg_origin")) |>
+    tidyr::separate_wider_delim(name, "_", names = c("pckg_loaded", "pckg_origin")) |>
     dplyr::rename(func = value) |>
-    dplyr::group_by(func) |>
-    dplyr::mutate(pckg_origin = get_mode(pckg_origin)) |>
-    dplyr::ungroup() |>
+    dplyr::mutate(pckg_origin = get_mode(pckg_origin), .by = func) |>
     dplyr::distinct()
 
   funs_scouted <- conflicted::conflict_scout() |>
     purrr::transpose() |>
     purrr::list_flatten() |>
-    purrr::discard(is.null) |>
     tibble::as_tibble(.name_repair = "minimal")
 
   if (nrow(funs_scouted) > 0) {
     funs_scouted <- funs_scouted |>
       tidyr::pivot_longer(tidyselect::everything(), names_to = "func") |>
-      dplyr::group_by(func) |>
-      dplyr::summarise(pckg_preferred = stringr::str_flatten_comma(value, na.rm = TRUE)) |>
-      dplyr::ungroup()
+      dplyr::summarise(pckg_preferred = stringr::str_flatten_comma(value, na.rm = TRUE), .by = func)
   } else {
     funs_scouted <- tibble::tibble(pckg_preferred = "zzz", func = "zzz")
   }
 
   funs_augmented <- funs_loaded |>
-    dplyr::left_join(funs_origin,
-                     c("pckg_loaded", "func")) |>
-    dplyr::left_join(funs_scouted,
-                     c("func")) |>
+    dplyr::left_join(funs_origin, dplyr::join_by(pckg_loaded, func)) |>
+    dplyr::left_join(funs_scouted, dplyr::join_by(func)) |>
     dplyr::group_by(func) |>
     tidyr::fill(pckg_origin, .direction = "updown") |>
     dplyr::mutate(
@@ -103,19 +96,16 @@ used_here <- \(fil = knitr::current_input()) {
     stringr::str_extract_all("([a-zA-Z_]+::)?\\\\hlkwd\\{([^\\{\\}]*(?=\\}))") |>
     purrr::list_c() |>
     tibble::as_tibble() |>
-    tidyr::separate(value, into = c("pckg", "func"), sep = "\\\\hlkwd{") |>
-    dplyr::mutate(pckg = stringr::str_remove(pckg, "::")) |>
-    dplyr::mutate(pckg = dplyr::na_if(pckg, ""))
+    tidyr::separate_wider_regex(value, c(pckg = ".*?", "\\\\hlkwd\\{", func = ".*")) |>
+    dplyr::mutate(pckg = stringr::str_remove(pckg, "::") |> dplyr::na_if(""))
 
   funs_used <-
     funs_coded |>
-    dplyr::left_join(funs_augmented, by = "func") |>
+    dplyr::left_join(funs_augmented, dplyr::join_by(func)) |>
     dplyr::mutate(pckg = dplyr::coalesce(pckg, pckgx)) |>
     dplyr::count(pckg, func) |>
     dplyr::mutate(func = stringr::str_c(func, "[", n, "]")) |>
-    dplyr::group_by(pckg) |>
-    dplyr::summarise(func = stringr::str_c(func, collapse = ", ")) |>
-    dplyr::ungroup() |>
+    dplyr::summarise(func = stringr::str_c(func, collapse = ", "), .by = pckg) |>
     tidyr::drop_na()
 
   funs_used |>
