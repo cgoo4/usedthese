@@ -24,7 +24,7 @@ Suggests:
 Config/testthat/edition: 3
 RoxygenNote: 7.2.3
 Imports: 
-    conflicted,
+    conflicted (>= 1.2.0),
     dplyr (>= 1.1.0),
     highr,
     httr,

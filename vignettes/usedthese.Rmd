@@ -18,7 +18,9 @@ knitr::opts_chunk$set(
 
 To add a summary table of package & function usage to the foot of a Quarto document, add `used_here()` to the end of the code. A separate code chunk with an appropriate heading is suggested but not essential.
 
-The package author recommends using the [conflicted package](https://conflicted.r-lib.org) to resolve conflicts. In the example below, 'dplyr' has been preferred over stats for `filter()` and `lag()`, and over the xts package for `first()` and `last()`.
+The package author recommends using the [conflicted package](https://conflicted.r-lib.org) to resolve conflicts. In the example below, 'dplyr' has been preferred over stats for `filter()` and over the xts package for `last()`.
+
+An alternative approach to using conflicted is to use the `exclude` or `include.only` argument in `library()`. This is also shown below with the xts version of `first` excluded and hence the dplyr version preferred.
 
 ## Some code
 
@@ -26,9 +28,9 @@ The package author recommends using the [conflicted package](https://conflicted.
 options(tidyverse.quiet = TRUE)
 library(conflicted)
 library(tidyverse)
-conflict_prefer_all("dplyr", quiet = TRUE)
+conflicts_prefer(dplyr::filter, dplyr::last)
 library(usedthese)
-library(xts)
+library(xts, exclude = "first")
 
 conflict_scout()
 ```
@@ -52,6 +54,7 @@ In the example below, `tribble()` is counted once against the (originating) tibb
 
 The rendered table is assigned the CSS class `.usedthese` to help other `used_*` functions find and aggregate multiple tables across one or more websites.
 
-```{r}
+```{r warning=FALSE}
+
 used_here()
 ```
