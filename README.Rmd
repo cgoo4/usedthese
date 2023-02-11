@@ -43,8 +43,6 @@ I personally find this approach makes it easier for me to check for consistency 
 
 When the Tidyverse blog announced changes to [dplyr](https://www.tidyverse.org/blog/2022/11/dplyr-1-1-0-is-coming-soon/) and [purrr](https://www.tidyverse.org/blog/2022/12/purrr-1-0-0/) a quick review of my [Favourite Things](https://www.quantumjitter.com/project/box/) identified a number of opportunities to try out the exciting new features. For example, dplyr introduced temporary grouping with the `.by` argument for mutate and amigos. `group_by()` and `ungroup()` had been used many times and most of these occurrences could be replaced with the new more concise approach.
 
-There's a nice additional benefit too. Quarto websites have a search bar. And whilst the results *exclude* code, they *include* the contents of the usage table. So, for example, if you search [quantumjitter.com](https://www.quantumjitter.com/project/) for "separate_wider_regex" you can find any project using that function.
-
 ## Installation
 
 You can install the development version of usedthese from [GitHub](https://github.com/) with:

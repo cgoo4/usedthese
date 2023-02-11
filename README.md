@@ -61,12 +61,6 @@ and amigos. `group_by()` and `ungroup()` had been used many times and
 most of these occurrences could be replaced with the new more concise
 approach.
 
-There’s a nice additional benefit too. Quarto websites have a search
-bar. And whilst the results *exclude* code, they *include* the contents
-of the usage table. So, for example, if you search
-[quantumjitter.com](https://www.quantumjitter.com/project/) for
-“separate_wider_regex” you can find any project using that function.
-
 ## Installation
 
 You can install the development version of usedthese from
