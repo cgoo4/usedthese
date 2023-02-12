@@ -65,9 +65,9 @@ used_here <- \(fil = knitr::current_input()) {
     dplyr::distinct()
 
   funs_scouted <- conflicted::conflict_scout() |>
-    purrr::keep(\(x) length(x) == 1) |>
     purrr::transpose() |>
     purrr::list_flatten() |>
+    purrr::discard(is.null) |>
     tibble::as_tibble(.name_repair = "minimal")
 
   if (nrow(funs_scouted) > 0) {
