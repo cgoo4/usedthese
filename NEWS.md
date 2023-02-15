@@ -1,4 +1,4 @@
-# usedthese 0.2.0.9000 (Dev Version)
+# usedthese 0.3.0
 
 * Respects `include.only` and `exclude` arguments specified in `library()`
 * Small performance improvement with dplyr 1.1 and tidyr 1.3
