@@ -27,7 +27,8 @@ An alternative approach to using conflicted is to use the `exclude` or `include.
 ```{r setup}
 options(tidyverse.quiet = TRUE)
 library(conflicted)
-library(tidyverse)
+library(dplyr)
+library(tibble)
 conflicts_prefer(dplyr::filter, dplyr::last)
 library(usedthese)
 library(xts, exclude = "first")
