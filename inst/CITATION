@@ -1,10 +1,8 @@
-citHeader("To cite usedthese in publications use:")
-
-citEntry(
-  entry    = "Manual",
-  title    = "usedthese: R Package & Function Usage",
-  author   = "Carl Goodwin",
-  year     = "2023",
-  url      = "https://cgoo4.github.io/usedthese/",
-  textVersion = "Goodwin, Carl. 2022. usedthese: R Package & Function Usage. https://cgoo4.github.io/usedthese/"
+bibentry(
+  "Manual",
+  title = "Summarise package & function usage with {usedthese}",
+  author = "Carl Goodwin",
+  year = 2023,
+  url = "https://cgoo4.github.io/usedthese/",
+  textVersion = "Goodwin, Carl. 2023. Summarise package & function usage with {usedthese}. https://cgoo4.github.io/usedthese/"
 )
