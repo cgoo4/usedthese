@@ -1,3 +1,5 @@
+## Notes
+
 Fixes a test error reported by CRAN
 
 ## R CMD check results
