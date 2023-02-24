@@ -4,7 +4,7 @@
 \alias{used_there}
 \title{Scrape the summaries for site-wide analysis}
 \usage{
-used_there(url, num_links = 20)
+used_there(url, num_links = 30)
 }
 \arguments{
 \item{url}{The url to the website listing page of posts containing usage tables created with

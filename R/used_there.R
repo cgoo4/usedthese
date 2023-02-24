@@ -17,7 +17,7 @@
 #' # Uses a Quarto listing url to scrape & consolidate usage
 #' \donttest{used_there("https://www.quantumjitter.com/project/", 1)}
 #'
-used_there <- \(url, num_links = 20) {
+used_there <- \(url, num_links = 30) {
   urls <- url |>
     rvest::read_html() |>
     rvest::html_elements(".quarto-grid-link ,
@@ -30,7 +30,7 @@ used_there <- \(url, num_links = 20) {
                            httr::parse_url(url)$hostname
                          )
     ) |>
-    utils::head(num_links)
+    utils::tail(num_links)
 
   purrr::map(urls, \(x) {
     x |>

@@ -1,3 +1,8 @@
+# usedthese 0.3.1
+
+* Patch update to fix test error
+* Default `used_there()` `num_links` to 30
+
 # usedthese 0.3.0
 
 * Respects `include.only` and `exclude` arguments specified in `library()`

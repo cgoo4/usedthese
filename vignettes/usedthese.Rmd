@@ -26,6 +26,7 @@ An alternative approach to using conflicted is to use the `exclude` or `include.
 
 ```{r setup}
 options(tidyverse.quiet = TRUE)
+options(xts.warn_dplyr_breaks_lag = FALSE)
 library(conflicted)
 library(dplyr)
 library(tibble)
