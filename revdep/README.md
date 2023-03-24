@@ -14,7 +14,7 @@
   </tr>
   <tr>
    <td style="text-align:left;"> os </td>
-   <td style="text-align:left;"> macOS Ventura 13.2 </td>
+   <td style="text-align:left;"> macOS Ventura 13.2.1 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> system </td>
@@ -42,11 +42,11 @@
   </tr>
   <tr>
    <td style="text-align:left;"> date </td>
-   <td style="text-align:left;"> 2023-02-15 </td>
+   <td style="text-align:left;"> 2023-03-24 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rstudio </td>
-   <td style="text-align:left;"> 2022.12.0+353 Elsbeth Geranium (desktop) </td>
+   <td style="text-align:left;"> 2023.03.0+386 Cherry Blossom (desktop) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pandoc </td>
@@ -69,8 +69,14 @@
 <tbody>
   <tr>
    <td style="text-align:left;"> usedthese </td>
-   <td style="text-align:left;"> 0.2.0 </td>
-   <td style="text-align:left;"> 0.3.0 </td>
+   <td style="text-align:left;"> 0.3.1 </td>
+   <td style="text-align:left;"> 0.3.2 </td>
+   <td style="text-align:left;"> * </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> xfun </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.38 </td>
    <td style="text-align:left;"> * </td>
   </tr>
 </tbody>
