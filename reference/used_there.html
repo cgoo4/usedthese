@@ -12,7 +12,7 @@ by searching for tables with the CSS class "usedthese"'><meta property="og:image
     
     <a class="navbar-brand me-2" href="../index.html">usedthese</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,19 +90,19 @@ this argument. Defaults to 20.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Uses a Quarto listing url to scrape &amp; consolidate usage</span></span></span>
 <span class="r-in"><span><span class="fu">used_there</span><span class="op">(</span><span class="st">"https://www.quantumjitter.com/project/"</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 42 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Package    Function            n url                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> base       as.Date             1 https://www.quantumjitter.com/project/jitte…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> base       as.numeric          1 https://www.quantumjitter.com/project/jitte…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> base       c                   2 https://www.quantumjitter.com/project/jitte…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> base       is.na               1 https://www.quantumjitter.com/project/jitte…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> base       library             8 https://www.quantumjitter.com/project/jitte…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> base       max                 1 https://www.quantumjitter.com/project/jitte…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> base       sum                 4 https://www.quantumjitter.com/project/jitte…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> clock      date_format         1 https://www.quantumjitter.com/project/jitte…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> clock      date_parse          1 https://www.quantumjitter.com/project/jitte…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> conflicted conflict_prefer     1 https://www.quantumjitter.com/project/jitte…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 32 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Package    Function                n url                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> base       as.Date                 1 https://www.quantumjitter.com/project/j…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> base       as.numeric              1 https://www.quantumjitter.com/project/j…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> base       c                       2 https://www.quantumjitter.com/project/j…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> base       is.na                   1 https://www.quantumjitter.com/project/j…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> base       library                 8 https://www.quantumjitter.com/project/j…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> base       max                     1 https://www.quantumjitter.com/project/j…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> base       sum                     4 https://www.quantumjitter.com/project/j…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> clock      date_format             1 https://www.quantumjitter.com/project/j…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> conflicted conflict_prefer         2 https://www.quantumjitter.com/project/j…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> conflicted conflict_prefer_all     1 https://www.quantumjitter.com/project/j…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 32 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
