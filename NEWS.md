@@ -1,3 +1,7 @@
+# usedthese 0.3.2
+
+* `used_there()` fails gracefully if Internet resource unavailable
+
 # usedthese 0.3.1
 
 * Patch update to fix test error

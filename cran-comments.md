@@ -1,6 +1,6 @@
 ## Notes
 
-Fixes a test error reported by CRAN
+Fixes issue reported by CRAN: Fails gracefully if internet resource unavailable
 
 ## R CMD check results
 

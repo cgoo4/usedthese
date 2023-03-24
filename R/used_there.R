@@ -18,8 +18,11 @@
 #' \donttest{used_there("https://www.quantumjitter.com/project/", 1)}
 #'
 used_there <- \(url, num_links = 30) {
-  urls <- url |>
-    rvest::read_html() |>
+  html <- rlang::try_fetch(url |> rvest::read_html(),
+      error = \(cnd) rlang::abort("URL currently unavailable. Please try later.", parent = cnd)
+    )
+
+  urls <- html |>
     rvest::html_elements(".quarto-grid-link ,
                          .quarto-default-link ,
                          .quarto-table-link") |>
@@ -46,3 +49,4 @@ used_there <- \(url, num_links = 30) {
                    "([^ ]+)\\[(.+)\\]",
                    convert = TRUE)
 }
+

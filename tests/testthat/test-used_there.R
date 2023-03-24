@@ -13,3 +13,10 @@ test_that("First 3 lines of the first link", {
     )
   )
 })
+
+test_that("Resource unavailable", {
+  expect_error(
+    used_there("https://quantumjitter.com/project2", 1),
+    "URL currently unavailable. Please try later."
+  )
+})
