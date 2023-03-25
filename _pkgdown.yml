@@ -4,3 +4,8 @@ template:
   bootswatch: lux
   bslib:
     pkgdown-nav-height: 100px
+
+news:
+  releases:
+  - text: "Version 0.1.0"
+    href: https://www.quantumjitter.com/blog/usedthese/
