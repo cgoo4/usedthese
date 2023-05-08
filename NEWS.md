@@ -1,5 +1,7 @@
 # usedthese (development version)
 
+* Fixed occasional `used_here()` warning
+
 # usedthese 0.3.2
 
 * `used_there()` fails gracefully if Internet resource unavailable

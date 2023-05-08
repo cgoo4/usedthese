@@ -65,14 +65,13 @@ used_here <- \(fil = knitr::current_input()) {
     dplyr::distinct()
 
   funs_scouted <- conflicted::conflict_scout() |>
-    purrr::transpose() |>
-    purrr::list_flatten() |>
-    purrr::discard(is.null) |>
-    tibble::as_tibble(.name_repair = "minimal")
+    unlist() |>
+    dplyr::bind_rows()
 
   if (nrow(funs_scouted) > 0) {
     funs_scouted <- funs_scouted |>
       tidyr::pivot_longer(tidyselect::everything(), names_to = "func") |>
+      dplyr::mutate(func = stringr::str_remove(func, "\\d$")) |>
       dplyr::summarise(pckg_preferred = stringr::str_flatten_comma(value, na.rm = TRUE), .by = func)
   } else {
     funs_scouted <- tibble::tibble(pckg_preferred = "zzz", func = "zzz")
