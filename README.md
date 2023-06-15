@@ -12,6 +12,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 coverage](https://codecov.io/gh/cgoo4/usedthese/branch/master/graph/badge.svg)](https://app.codecov.io/gh/cgoo4/usedthese?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/usedthese)](https://CRAN.R-project.org/package=usedthese)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/usedthese?color=blue)](https://cran.r-project.org/package=usedthese)
 
 <!-- badges: end -->
 
@@ -61,6 +62,6 @@ You can install the development version of usedthese from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("cgoo4/usedthese")
+# install.packages("pak")
+pak::pak("cgoo4/usedthese")
 ```
