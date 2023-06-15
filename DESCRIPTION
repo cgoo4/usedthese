@@ -39,7 +39,7 @@ Imports:
     withr
 Depends: 
     R (>= 4.1)
-URL: https://cgoo4.github.io/usedthese/
+URL: https://cgoo4.github.io/usedthese/, https://github.com/cgoo4/usedthese
 BugReports: https://github.com/cgoo4/usedthese/issues
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)

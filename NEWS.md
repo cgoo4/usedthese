@@ -1,6 +1,7 @@
 # usedthese (development version)
 
 * Fixed occasional `used_here()` warning
+* Documentation updates
 
 # usedthese 0.3.2
 

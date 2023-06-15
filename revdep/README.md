@@ -10,11 +10,11 @@
 <tbody>
   <tr>
    <td style="text-align:left;"> version </td>
-   <td style="text-align:left;"> R version 4.2.2 (2022-10-31) </td>
+   <td style="text-align:left;"> R version 4.3.0 (2023-04-21) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> os </td>
-   <td style="text-align:left;"> macOS Ventura 13.2.1 </td>
+   <td style="text-align:left;"> macOS Ventura 13.3.1 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> system </td>
@@ -42,15 +42,15 @@
   </tr>
   <tr>
    <td style="text-align:left;"> date </td>
-   <td style="text-align:left;"> 2023-03-24 </td>
+   <td style="text-align:left;"> 2023-06-15 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> rstudio </td>
-   <td style="text-align:left;"> 2023.03.0+386 Cherry Blossom (desktop) </td>
+   <td style="text-align:left;"> 2023.06.0+421 Mountain Hydrangea (desktop) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> pandoc </td>
-   <td style="text-align:left;"> 2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown) </td>
+   <td style="text-align:left;"> 3.1.1 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown) </td>
   </tr>
 </tbody>
 </table>
@@ -69,14 +69,14 @@
 <tbody>
   <tr>
    <td style="text-align:left;"> usedthese </td>
-   <td style="text-align:left;"> 0.3.1 </td>
    <td style="text-align:left;"> 0.3.2 </td>
+   <td style="text-align:left;"> 0.3.2.9000 </td>
    <td style="text-align:left;"> * </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> xfun </td>
+   <td style="text-align:left;"> vctrs </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 0.38 </td>
+   <td style="text-align:left;"> 0.6.2 </td>
    <td style="text-align:left;"> * </td>
   </tr>
 </tbody>

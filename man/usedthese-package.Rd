@@ -14,6 +14,7 @@ Consistent with 'knitr' syntax highlighting, 'usedthese' adds a summary table of
 Useful links:
 \itemize{
   \item \url{https://cgoo4.github.io/usedthese/}
+  \item \url{https://github.com/cgoo4/usedthese}
   \item Report bugs at \url{https://github.com/cgoo4/usedthese/issues}
 }
 
