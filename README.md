@@ -13,7 +13,6 @@ coverage](https://codecov.io/gh/cgoo4/usedthese/branch/main/graph/badge.svg)](ht
 [![CRAN
 status](https://www.r-pkg.org/badges/version/usedthese)](https://CRAN.R-project.org/package=usedthese)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/usedthese?color=blue)](https://cran.r-project.org/package=usedthese)
-
 <!-- badges: end -->
 
 ## Overview
