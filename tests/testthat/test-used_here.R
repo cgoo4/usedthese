@@ -18,12 +18,12 @@ test_that("No Conflicts", {
   )
 })
 
-library(dplyr)
-library(tibble)
-library(xts, exclude = "first")
-library(tsibble)
-
 test_that("Conflicts", {
+  library(dplyr)
+  library(tibble)
+  library(xts, exclude = "first")
+  library(tsibble)
+
   expect_equal(
     used_here("library(dplyr)\nlibrary(tibble)\nlibrary(xts, exclude = 'first')\nlibrary(tsibble)\ntribble(~group, ~a1, ~a2, ~b1,\n'x', 1, 2, 3,\n'x', 4, 5, 6,\n'y', 7, 8, 9) |>\nselect(-starts_with('b')) |>\nfilter(group == 'x') |>\nmutate(first_a1 = first(a1), last_a2 = last(a2))\n\ntsibble(date = as.Date('2017-01-01') + 0:9, value = rnorm(10)) |> as_tsibble()"),
     tibble::tibble(

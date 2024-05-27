@@ -9,7 +9,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![Codecov test
-coverage](https://codecov.io/gh/cgoo4/usedthese/branch/master/graph/badge.svg)](https://app.codecov.io/gh/cgoo4/usedthese?branch=master)
+coverage](https://codecov.io/gh/cgoo4/usedthese/branch/main/graph/badge.svg)](https://app.codecov.io/gh/cgoo4/usedthese?branch=main)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/usedthese)](https://CRAN.R-project.org/package=usedthese)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/usedthese?color=blue)](https://cran.r-project.org/package=usedthese)
@@ -58,8 +58,14 @@ approach.
 
 ## Installation
 
-You can install the development version of usedthese from
-[GitHub](https://github.com/) with:
+``` r
+install.packages("usedthese")
+```
+
+## Development version
+
+To get a bug fix, or to use a feature from the development version, you
+can install usedthese from GitHub.
 
 ``` r
 # install.packages("pak")
