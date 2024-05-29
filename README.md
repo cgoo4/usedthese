@@ -37,7 +37,7 @@ including `used_here()` in each Quarto document.
 
 `used_there()` scrapes all the tables created by `used_here()` to enable
 a [Favourite Things](https://www.quantumjitter.com/project/box/) article
-on how R packages and functions are used across the website.
+on how packages and functions are used across the website.
 
 I personally find this approach makes it easier for me to check for
 consistency of usage, acknowledge the packages I most need to keep

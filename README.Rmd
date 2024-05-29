@@ -36,7 +36,7 @@ usedthese is a pair of functions to summarise package & function usage in Quarto
 
 Each "little project" on the Quarto website [quantumjitter.com](https://www.quantumjitter.com/project/) focuses on a data science technique or machine learning model to analyse real-world data. At the foot of each of these is a quantified view of the R packages and functions used in the associated code. This is achieved by including `used_here()` in each Quarto document.
 
-`used_there()` scrapes all the tables created by `used_here()` to enable a [Favourite Things](https://www.quantumjitter.com/project/box/) article on how R packages and functions are used across the website.
+`used_there()` scrapes all the tables created by `used_here()` to enable a [Favourite Things](https://www.quantumjitter.com/project/box/) article on how packages and functions are used across the website.
 
 I personally find this approach makes it easier for me to check for consistency of usage, acknowledge the packages I most need to keep abreast of (or go deeper on), and spot opportunities for updates to the latest and greatest.
 
