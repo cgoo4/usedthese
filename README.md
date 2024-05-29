@@ -17,7 +17,7 @@ status](https://www.r-pkg.org/badges/version/usedthese)](https://CRAN.R-project.
 
 ## Overview
 
-usedthese is a pair of functions to summarise R package & function usage
+usedthese is a pair of functions to summarise package & function usage
 in Quarto documents consistent with knitr’s syntax highlighting:
 
 1.  `used_here()` adds a nicely-rendered summary table of usage to a
