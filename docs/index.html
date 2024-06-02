@@ -54,14 +54,8 @@
     <a class="dropdown-item" href="articles/multipage.html">Site-wide usage</a>
   </div>
 </li>
-<li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-news">
-    <h6 class="dropdown-header" data-toc-skip>Releases</h6>
-    <a class="external-link dropdown-item" href="https://www.quantumjitter.com/blog/usedthese/">Version 0.1.0</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="news/index.html">Changelog</a>
-  </div>
+<li class="nav-item">
+  <a class="nav-link" href="news/index.html">Changelog</a>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -93,7 +87,7 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>usedthese is a pair of functions to summarise R package &amp; function usage in Quarto documents consistent with knitr’s syntax highlighting:</p>
+<p>usedthese is a pair of functions to summarise package &amp; function usage in Quarto documents consistent with knitr’s syntax highlighting:</p>
 <ol style="list-style-type: decimal">
 <li><p><code><a href="reference/used_here.html">used_here()</a></code> adds a nicely-rendered summary table of usage to a single document;</p></li>
 <li><p><code><a href="reference/used_there.html">used_there()</a></code> harvests and consolidates the tables created above ready for site-wide analysis.</p></li>
@@ -103,7 +97,7 @@
 <h2 id="example-use-case">Example Use Case<a class="anchor" aria-label="anchor" href="#example-use-case"></a>
 </h2>
 <p>Each “little project” on the Quarto website <a href="https://www.quantumjitter.com/project/" class="external-link">quantumjitter.com</a> focuses on a data science technique or machine learning model to analyse real-world data. At the foot of each of these is a quantified view of the R packages and functions used in the associated code. This is achieved by including <code><a href="reference/used_here.html">used_here()</a></code> in each Quarto document.</p>
-<p><code><a href="reference/used_there.html">used_there()</a></code> scrapes all the tables created by <code><a href="reference/used_here.html">used_here()</a></code> to enable a <a href="https://www.quantumjitter.com/project/box/" class="external-link">Favourite Things</a> article on how R packages and functions are used across the website.</p>
+<p><code><a href="reference/used_there.html">used_there()</a></code> scrapes all the tables created by <code><a href="reference/used_here.html">used_here()</a></code> to enable a <a href="https://www.quantumjitter.com/project/box/" class="external-link">Favourite Things</a> article on how packages and functions are used across the website.</p>
 <p>I personally find this approach makes it easier for me to check for consistency of usage, acknowledge the packages I most need to keep abreast of (or go deeper on), and spot opportunities for updates to the latest and greatest.</p>
 <p>When the Tidyverse blog announced changes to <a href="https://www.tidyverse.org/blog/2022/11/dplyr-1-1-0-is-coming-soon/" class="external-link">dplyr</a> and <a href="https://www.tidyverse.org/blog/2022/12/purrr-1-0-0/" class="external-link">purrr</a> a quick review of my <a href="https://www.quantumjitter.com/project/box/" class="external-link">Favourite Things</a> identified a number of opportunities to try out the exciting new features. For example, dplyr introduced temporary grouping with the <code>.by</code> argument for mutate and amigos. <code>group_by()</code> and <code>ungroup()</code> had been used many times and most of these occurrences could be replaced with the new more concise approach.</p>
 </div>
