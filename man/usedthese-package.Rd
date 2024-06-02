@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Consistent with 'knitr' syntax highlighting, 'usedthese' adds a summary table of R package & function usage to a Quarto document and enables aggregation of usage across a Quarto website. Learn more about 'usedthese' at \url{https://cgoo4.github.io/usedthese/}.
+Consistent with 'knitr' syntax highlighting, 'usedthese' adds a summary table of package & function usage to a Quarto document and enables aggregation of usage across a website.
 }
 \seealso{
 Useful links:
@@ -20,7 +20,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Carl Goodwin \email{carl.goodwin@quantumjitter.com}
+\strong{Maintainer}: Carl Goodwin \email{carl.goodwin@quantumjitter.com} [copyright holder]
 
 }
 \keyword{internal}
