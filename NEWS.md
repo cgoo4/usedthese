@@ -2,8 +2,6 @@
 
 # usedthese 0.4.0
 
-# usedthese 0.3.4
-
 * Spring clean
 * Default branch master to main
 
