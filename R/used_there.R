@@ -1,5 +1,7 @@
 #' Scrape the summaries for site-wide analysis
 #'
+#' @description `r lifecycle::badge('experimental')`
+#'
 #' Harvests and consolidates function usage tables from pages of a Quarto website
 #' by searching for tables with the CSS class "usedthese"
 #'

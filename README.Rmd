@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) 
 [![Codecov test coverage](https://codecov.io/gh/cgoo4/usedthese/branch/main/graph/badge.svg)](https://app.codecov.io/gh/cgoo4/usedthese?branch=main)
 [![CRAN status](https://www.r-pkg.org/badges/version/usedthese)](https://CRAN.R-project.org/package=usedthese) 
+[![](https://img.shields.io/badge/doi-10.32614/CRAN.package.usedthese-skyblue.svg)](https://doi.org/10.32614/CRAN.package.usedthese)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/usedthese?color=blue)](https://cran.r-project.org/package=usedthese)
 <!-- badges: end -->
 

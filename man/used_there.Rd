@@ -17,6 +17,8 @@ this argument. Defaults to 20.}
 A tibble summarising package & function usage
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 Harvests and consolidates function usage tables from pages of a Quarto website
 by searching for tables with the CSS class "usedthese"
 }

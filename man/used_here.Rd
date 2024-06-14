@@ -18,6 +18,8 @@ used in a fresh R session.}
 A printed kable table with the css class "usedthese"
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 Consistent with knitr syntax highlighting, \code{\link[=used_here]{used_here()}} adds a
 summary table of R package & function usage to a knitted Quarto or R Markdown document
 }
