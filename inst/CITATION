@@ -2,7 +2,7 @@ bibentry(
   "Manual",
   title = "Summarise package & function usage with {usedthese}",
   author = "Carl Goodwin",
-  year = 2023,
+  year = 2024,
   url = "https://cgoo4.github.io/usedthese/",
-  textVersion = "Goodwin, Carl. 2023. Summarise package & function usage with {usedthese}. https://cgoo4.github.io/usedthese/"
+  textVersion = "Goodwin, Carl. 2024. Summarise package & function usage with {usedthese}. https://cgoo4.github.io/usedthese/"
 )

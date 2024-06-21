@@ -14,14 +14,18 @@ BugReports: https://github.com/cgoo4/usedthese/issues
 Depends: 
     R (>= 4.1)
 Imports: 
+    cli,
     conflicted (>= 1.2.0),
     dplyr (>= 1.1.0),
     highr,
+    httr,
     kableExtra,
     knitr,
+    lifecycle,
     purrr,
     readr,
     rlang,
+    rvest,
     stringr,
     tibble,
     tidyr (>= 1.3.0),
@@ -29,9 +33,7 @@ Imports:
     withr
 Suggests: 
     covr,
-    httr,
     rmarkdown,
-    rvest,
     spelling,
     testthat (>= 3.0.0),
     tsibble,

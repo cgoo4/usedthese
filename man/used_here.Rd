@@ -2,9 +2,17 @@
 % Please edit documentation in R/used_here.R
 \name{used_here}
 \alias{used_here}
+\alias{get_funs_loaded}
+\alias{get_mode}
+\alias{get_loaded_pkg_imports}
+\alias{summarise_funs_scouted}
+\alias{augment_funs_loaded}
+\alias{extract_highlighted_funs}
+\alias{summarise_funs_used}
+\alias{print_with_class}
 \title{Summarise function usage in a single document}
 \usage{
-used_here(fil = knitr::current_input())
+used_here(fil = current_input())
 }
 \arguments{
 \item{fil}{If the usage summary is required in the document you are currently knitting,

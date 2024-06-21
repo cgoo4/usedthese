@@ -1,22 +1,29 @@
+test_that("Resource unavailable", {
+  expect_snapshot(
+    used_there("https://quantumjitter.com/project2", 1),
+    error = TRUE
+  )
+  expect_snapshot(
+    used_there("https://quantumjitter.com/project", 1:3),
+    error = TRUE
+  )
+})
+
 test_that("First 3 lines of the first link", {
+  local_mocked_bindings(
+    used_there = extract_usage
+  )
   expect_equal(
-    used_there("https://quantumjitter.com/project", 1) |> head(3),
+    used_there("jitter.html") |> head(3),
     tibble(
       Package = c("base", "base", "base"),
       Function = c("as.Date", "as.numeric", "c"),
       n = c(1, 1, 2),
       url = c(
-        "https://quantumjitter.com/project/jitter/",
-        "https://quantumjitter.com/project/jitter/",
-        "https://quantumjitter.com/project/jitter/"
+        "jitter.html",
+        "jitter.html",
+        "jitter.html"
       )
     )
-  )
-})
-
-test_that("Resource unavailable", {
-  expect_error(
-    used_there("https://quantumjitter.com/project2", 1),
-    "URL currently unavailable. Please try later."
   )
 })

@@ -2,6 +2,8 @@
 % Please edit documentation in R/used_there.R
 \name{used_there}
 \alias{used_there}
+\alias{get_links}
+\alias{extract_usage}
 \title{Scrape the summaries for site-wide analysis}
 \usage{
 used_there(url, num_links = 30)
@@ -11,7 +13,7 @@ used_there(url, num_links = 30)
 \code{\link[=used_here]{used_here()}}}
 
 \item{num_links}{The number of links returned from the listing page may be restricted using
-this argument. Defaults to 20.}
+this argument.}
 }
 \value{
 A tibble summarising package & function usage

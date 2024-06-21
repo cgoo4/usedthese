@@ -3,9 +3,9 @@ utils::globalVariables(
     "value",
     "name",
     "base",
-    "pckg_origin",
+    "pkg_origin",
     "n",
-    "pckg",
+    "pkg",
     "func",
     "total",
     "count",
@@ -13,7 +13,8 @@ utils::globalVariables(
     "Function",
     "Package",
     "packfun",
-    "pckg_preferred",
-    "pckgx"
+    "pkg_loaded",
+    "pkg_preferred",
+    "pkgx"
   )
 )
