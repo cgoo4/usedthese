@@ -1,4 +1,4 @@
-# usedthese (development version)
+# usedthese 0.5.0
 
 * Refactored code.
 * Improved error messages using `cli_abort`.
