@@ -9,11 +9,11 @@
 used_there(url, num_links = 30)
 }
 \arguments{
-\item{url}{The url to the website listing page of posts containing usage tables created with
-\code{\link[=used_here]{used_here()}}}
+\item{url}{The url to the website listing page of posts containing usage
+tables created with \code{\link[=used_here]{used_here()}}}
 
-\item{num_links}{The number of links returned from the listing page may be restricted using
-this argument.}
+\item{num_links}{The number of links returned from the listing page may be
+restricted using this argument.}
 }
 \value{
 A tibble summarising package & function usage
@@ -21,8 +21,8 @@ A tibble summarising package & function usage
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-Harvests and consolidates function usage tables from pages of a Quarto website
-by searching for tables with the CSS class "usedthese"
+Harvests and consolidates function usage tables from pages of a Quarto
+website by searching for tables with the CSS class "usedthese"
 }
 \examples{
 # Uses a Quarto listing url to scrape & consolidate usage

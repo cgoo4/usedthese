@@ -15,12 +15,12 @@
 used_here(fil = current_input())
 }
 \arguments{
-\item{fil}{If the usage summary is required in the document you are currently knitting,
-then no argument need be specified.
+\item{fil}{If the usage summary is required in the document you are currently
+knitting, then no argument need be specified.
 
-If you want to create a summary by running just the code chunk, then it is necessary to
-specify the quoted name of the saved file. You should first load and attach the packages
-used in a fresh R session.}
+If you want to create a summary by running just the code chunk, then it is
+necessary to specify the quoted name of the saved file. You should first
+load and attach the packages used in a fresh R session.}
 }
 \value{
 A printed kable table with the css class "usedthese"
@@ -28,13 +28,14 @@ A printed kable table with the css class "usedthese"
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-Consistent with knitr syntax highlighting, \code{\link[=used_here]{used_here()}} adds a
-summary table of R package & function usage to a knitted Quarto or R Markdown document
+Consistent with knitr syntax highlighting, \code{\link[=used_here]{used_here()}} adds a summary
+table of R package & function usage to a knitted Quarto or R Markdown
+document
 }
 \details{
-If the rendered summary includes rows where the package name is multiple packages
-separated by a comma, this will be due to an unresolved conflict. The recommended approach
-is to use the 'conflicted' package.
+If the rendered summary includes rows where the package name is
+multiple packages separated by a comma, this will be due to an unresolved
+conflict. The recommended approach is to use the 'conflicted' package.
 }
 \examples{
 # Simple example which mimics a two-line script and creates

@@ -1,86 +1,30 @@
 # Platform
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> field </th>
-   <th style="text-align:left;"> value </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> version </td>
-   <td style="text-align:left;"> R version 4.3.0 (2023-04-21) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> os </td>
-   <td style="text-align:left;"> macOS Ventura 13.3.1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> system </td>
-   <td style="text-align:left;"> aarch64, darwin20 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ui </td>
-   <td style="text-align:left;"> RStudio </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> language </td>
-   <td style="text-align:left;"> (EN) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> collate </td>
-   <td style="text-align:left;"> en_US.UTF-8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> ctype </td>
-   <td style="text-align:left;"> en_US.UTF-8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> tz </td>
-   <td style="text-align:left;"> Europe/London </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> date </td>
-   <td style="text-align:left;"> 2023-06-15 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> rstudio </td>
-   <td style="text-align:left;"> 2023.06.0+421 Mountain Hydrangea (desktop) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pandoc </td>
-   <td style="text-align:left;"> 3.1.1 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown) </td>
-  </tr>
-</tbody>
-</table>
+|field    |value                                                                                               |
+|:--------|:---------------------------------------------------------------------------------------------------|
+|version  |R version 4.4.1 (2024-06-14)                                                                        |
+|os       |macOS Sonoma 14.5                                                                                   |
+|system   |aarch64, darwin20                                                                                   |
+|ui       |RStudio                                                                                             |
+|language |(EN)                                                                                                |
+|collate  |en_US.UTF-8                                                                                         |
+|ctype    |en_US.UTF-8                                                                                         |
+|tz       |Europe/London                                                                                       |
+|date     |2024-06-26                                                                                          |
+|rstudio  |2024.04.2+764 Chocolate Cosmos (desktop)                                                            |
+|pandoc   |3.1.11 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown) |
 
 # Dependencies
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> package </th>
-   <th style="text-align:left;"> old </th>
-   <th style="text-align:left;"> new </th>
-   <th style="text-align:left;"> Δ </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> usedthese </td>
-   <td style="text-align:left;"> 0.3.2 </td>
-   <td style="text-align:left;"> 0.3.2.9000 </td>
-   <td style="text-align:left;"> * </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> vctrs </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 0.6.2 </td>
-   <td style="text-align:left;"> * </td>
-  </tr>
-</tbody>
-</table>
+|package     |old   |new        |Δ  |
+|:-----------|:-----|:----------|:--|
+|usedthese   |0.4.0 |0.4.0.9000 |*  |
+|cli         |NA    |3.6.3      |*  |
+|crayon      |NA    |1.5.3      |*  |
+|digest      |NA    |0.6.36     |*  |
+|evaluate    |NA    |0.24.0     |*  |
+|systemfonts |NA    |1.1.0.9000 |*  |
+|xfun        |NA    |0.45       |*  |
 
 # Revdeps
 

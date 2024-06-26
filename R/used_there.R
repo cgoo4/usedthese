@@ -2,14 +2,14 @@
 #'
 #' @description `r lifecycle::badge('experimental')`
 #'
-#' Harvests and consolidates function usage tables from pages of a Quarto website
-#' by searching for tables with the CSS class "usedthese"
+#'   Harvests and consolidates function usage tables from pages of a Quarto
+#'   website by searching for tables with the CSS class "usedthese"
 #'
-#' @param url The url to the website listing page of posts containing usage tables created with
-#' [used_here()]
+#' @param url The url to the website listing page of posts containing usage
+#'   tables created with [used_here()]
 #'
-#' @param num_links The number of links returned from the listing page may be restricted using
-#' this argument.
+#' @param num_links The number of links returned from the listing page may be
+#'   restricted using this argument.
 #'
 #' @return A tibble summarising package & function usage
 #'

@@ -2,19 +2,20 @@
 #'
 #' @description `r lifecycle::badge('experimental')`
 #'
-#' Consistent with knitr syntax highlighting, [used_here()] adds a
-#' summary table of R package & function usage to a knitted Quarto or R Markdown document
+#'   Consistent with knitr syntax highlighting, [used_here()] adds a summary
+#'   table of R package & function usage to a knitted Quarto or R Markdown
+#'   document
 #'
-#' @details If the rendered summary includes rows where the package name is multiple packages
-#' separated by a comma, this will be due to an unresolved conflict. The recommended approach
-#' is to use the 'conflicted' package.
+#' @details If the rendered summary includes rows where the package name is
+#'   multiple packages separated by a comma, this will be due to an unresolved
+#'   conflict. The recommended approach is to use the 'conflicted' package.
 #'
-#' @param fil If the usage summary is required in the document you are currently knitting,
-#' then no argument need be specified.
+#' @param fil If the usage summary is required in the document you are currently
+#'   knitting, then no argument need be specified.
 #'
-#' If you want to create a summary by running just the code chunk, then it is necessary to
-#' specify the quoted name of the saved file. You should first load and attach the packages
-#' used in a fresh R session.
+#'   If you want to create a summary by running just the code chunk, then it is
+#'   necessary to specify the quoted name of the saved file. You should first
+#'   load and attach the packages used in a fresh R session.
 #'
 #' @return A printed kable table with the css class "usedthese"
 #'
