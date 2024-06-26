@@ -1,7 +1,7 @@
 Type: Package
 Package: usedthese
 Title: Summarises Package & Function Usage
-Version: 0.5.0
+Version: 0.5.0.9000
 Authors@R: 
     person("Carl", "Goodwin", , "carl.goodwin@quantumjitter.com", role = c("aut", "cre", "cph"))
 Description: Consistent with 'knitr' syntax highlighting, 'usedthese' adds
