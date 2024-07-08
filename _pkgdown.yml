@@ -1,9 +1,7 @@
 url: https://cgoo4.github.io/usedthese/
 template:
+  light-switch: true
   bootstrap: 5
-  bootswatch: lux
-  bslib:
-    pkgdown-nav-height: 100px
 
 news:
   releases:
