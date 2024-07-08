@@ -27,3 +27,10 @@ test_that("First 3 lines of the first link", {
     )
   )
 })
+
+test_that("Get links", {
+  html <- rvest::read_html("https://www.quantumjitter.com/project/")
+  expect_snapshot(
+    get_links(html, "https://www.quantumjitter.com/project/", 5)
+  )
+})

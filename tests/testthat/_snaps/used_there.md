@@ -18,3 +18,14 @@
       ! `num_links` must be a scalar
       x You've supplied a <integer> object of length 3.
 
+# Get links
+
+    Code
+      get_links(html, "https://www.quantumjitter.com/project/", 5)
+    Output
+      [1] "https://www.quantumjitter.com/project/planning/"
+      [2] "https://www.quantumjitter.com/project/stories/" 
+      [3] "https://www.quantumjitter.com/project/sw10/"    
+      [4] "https://www.quantumjitter.com/project/sets/"    
+      [5] "https://www.quantumjitter.com/project/jitter/"  
+
