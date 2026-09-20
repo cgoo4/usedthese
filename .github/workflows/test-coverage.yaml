@@ -23,6 +23,11 @@ jobs:
         with:
           use-public-rspm: true
 
+      # CRAN macOS arm64 binaries now use zstd; older pkgdepends can't extract them
+      - name: Update pkgdepends
+        run: install.packages(c("pkgcache", "pkgdepends"), repos = "https://cloud.r-project.org")
+        shell: Rscript {0}
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::covr, any::xml2
