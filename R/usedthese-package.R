@@ -7,7 +7,7 @@
 #' @importFrom withr defer
 #' @importFrom cli cli_abort
 #' @importFrom utils tail
-#' @importFrom httr parse_url
+#' @importFrom xml2 url_absolute
 #' @importFrom tidyr drop_na separate_wider_regex fill pivot_longer
 #' @importFrom tidyr separate_wider_delim unnest extract separate_longer_delim
 #' @importFrom stringr str_c str_remove str_extract_all str_flatten_comma

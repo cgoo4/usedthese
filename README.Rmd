@@ -41,7 +41,7 @@ Each "little project" on the Quarto website [quantumjitter.com](https://www.quan
 
 I personally find this approach makes it easier for me to check for consistency of usage, acknowledge the packages I most need to keep abreast of (or go deeper on), and spot opportunities for updates to the latest and greatest.
 
-When the Tidyverse blog announced changes to [dplyr](https://www.tidyverse.org/blog/2022/11/dplyr-1-1-0-is-coming-soon/) and [purrr](https://www.tidyverse.org/blog/2022/12/purrr-1-0-0/) a quick review of my [Favourite Things](https://www.quantumjitter.com/project/box/) identified a number of opportunities to try out the exciting new features. For example, dplyr introduced temporary grouping with the `.by` argument for mutate and amigos. `group_by()` and `ungroup()` had been used many times and most of these occurrences could be replaced with the new more concise approach.
+When the Tidyverse blog announced changes to [dplyr](https://tidyverse.org/blog/2022/11/dplyr-1-1-0-is-coming-soon/) and [purrr](https://tidyverse.org/blog/2022/12/purrr-1-0-0/) a quick review of my [Favourite Things](https://www.quantumjitter.com/project/box/) identified a number of opportunities to try out the exciting new features. For example, dplyr introduced temporary grouping with the `.by` argument for mutate and amigos. `group_by()` and `ungroup()` had been used many times and most of these occurrences could be replaced with the new more concise approach.
 
 ## Installation
 

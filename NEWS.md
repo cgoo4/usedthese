@@ -1,4 +1,6 @@
-# usedthese (development version)
+# usedthese 0.5.1
+
+* Removed unused {httr} dependency.
 
 # usedthese 0.5.0
 

@@ -50,12 +50,7 @@ html |>
     ".quarto-grid-link, .quarto-default-link, .quarto-table-link"
   ) |>
   html_attr("href") |>
-  str_replace("^",
-              str_c(
-                parse_url(url)$scheme, "://",
-                parse_url(url)$hostname
-              )
-  ) |>
+  url_absolute(url) |>
   tail(num_links)
 }
 
