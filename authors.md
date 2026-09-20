@@ -7,7 +7,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/cgoo4/usedthese/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/cgoo4/usedthese/blob/v0.5.1/inst/CITATION)
 
 Goodwin, Carl. 2024. Summarise package & function usage with
 {usedthese}. https://cgoo4.github.io/usedthese/
