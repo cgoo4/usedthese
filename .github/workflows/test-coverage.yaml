@@ -23,10 +23,17 @@ jobs:
         with:
           use-public-rspm: true
 
-      # CRAN macOS arm64 binaries now use zstd; older pkgdepends can't extract them
-      - name: Update pkgdepends
-        run: install.packages(c("pak", "pkgcache", "pkgdepends"), repos = "https://cloud.r-project.org")
-        shell: Rscript {0}
+      # CRAN macOS arm64 binaries are now zstd-compressed, which pak's
+      # bundled pkgdepends cannot extract (r-lib/pkgdepends#485). Point pak
+      # at Posit Package Manager's gzip builds and block mac.cran.dev, which
+      # races the mirror and wins with the zstd file.
+      - name: Use P3M binaries on macOS
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          P3M='https://packagemanager.posit.co/cran/latest'
+          echo "PKG_CRAN_MIRROR=${P3M}" >> "$GITHUB_ENV"
+          echo '127.0.0.1 mac.cran.dev' | sudo tee -a /etc/hosts > /dev/null
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
