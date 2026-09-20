@@ -1,4 +1,7 @@
 test_that("Resource unavailable", {
+  local_mocked_bindings(
+    read_html = function(x) stop("cannot open the connection")
+  )
   expect_snapshot(
     used_there("https://quantumjitter.com/project2", 1),
     error = TRUE
@@ -29,7 +32,12 @@ test_that("First 3 lines of the first link", {
 })
 
 test_that("Get links", {
-  html <- rvest::read_html("https://www.quantumjitter.com/project/")
+  html <- rvest::read_html('
+    <html><body>
+      <a class="quarto-grid-link" href="/project/planning/"></a>
+      <a class="quarto-default-link" href="/project/sets/"></a>
+      <a class="quarto-table-link" href="/project/jitter/"></a>
+    </body></html>')
   expect_snapshot(
     get_links(html, "https://www.quantumjitter.com/project/", 5)
   )
