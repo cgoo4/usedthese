@@ -1,6 +1,10 @@
 # Changelog
 
+## usedthese (development version)
+
 ## usedthese 0.5.1
+
+CRAN release: 2026-09-20
 
 - Removed unused {httr} dependency.
 

@@ -16,20 +16,20 @@ scrapes and consolidates the tables into a `tibble` ready for analysis:
 
 
 used_there("https://www.quantumjitter.com/project/")
-#> # A tibble: 1,895 × 4
-#>    Package Function     n url                                          
-#>    <chr>   <chr>    <int> <chr>                                        
-#>  1 base    append       1 https://www.quantumjitter.com/project/saowtu/
-#>  2 base    c           10 https://www.quantumjitter.com/project/saowtu/
-#>  3 base    cumsum       2 https://www.quantumjitter.com/project/saowtu/
-#>  4 base    function     1 https://www.quantumjitter.com/project/saowtu/
-#>  5 base    if           1 https://www.quantumjitter.com/project/saowtu/
-#>  6 base    is.na        1 https://www.quantumjitter.com/project/saowtu/
-#>  7 base    library     10 https://www.quantumjitter.com/project/saowtu/
-#>  8 base    mean         2 https://www.quantumjitter.com/project/saowtu/
-#>  9 base    readRDS      1 https://www.quantumjitter.com/project/saowtu/
-#> 10 base    return       1 https://www.quantumjitter.com/project/saowtu/
-#> # ℹ 1,885 more rows
+#> # A tibble: 1,899 × 4
+#>    Package    Function                n url                                     
+#>    <chr>      <chr>               <int> <chr>                                   
+#>  1 base       c                       1 https://www.quantumjitter.com/project/g…
+#>  2 base       factor                  1 https://www.quantumjitter.com/project/g…
+#>  3 base       library                 7 https://www.quantumjitter.com/project/g…
+#>  4 base       mean                    2 https://www.quantumjitter.com/project/g…
+#>  5 base       seq                     1 https://www.quantumjitter.com/project/g…
+#>  6 base       seq_len                 1 https://www.quantumjitter.com/project/g…
+#>  7 base       set.seed                1 https://www.quantumjitter.com/project/g…
+#>  8 base       sprintf                 1 https://www.quantumjitter.com/project/g…
+#>  9 base       sqrt                    1 https://www.quantumjitter.com/project/g…
+#> 10 conflicted conflict_prefer_all     1 https://www.quantumjitter.com/project/g…
+#> # ℹ 1,889 more rows
 ```
 
 [Favourite Things](https://www.quantumjitter.com/project/box/) shows an

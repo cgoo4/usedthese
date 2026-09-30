@@ -21,6 +21,10 @@
 <meta property="og:description" content="Harvest the summary tables of package &amp; function usage created by used_here() ready for site-wide analysis.
 ">
 <meta property="og:image" content="https://cgoo4.github.io/usedthese/logo.png">
+<!-- Privacy-friendly analytics by Plausible --><script async src="https://plausible.io/js/pa-NUhVZnZCwCGJURgRZGvNe.js"></script><script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -30,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">usedthese</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,7 +89,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Site-wide usage</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/cgoo4/usedthese/blob/v0.5.1/vignettes/multipage.Rmd" class="external-link"><code>vignettes/multipage.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/cgoo4/usedthese/blob/main/vignettes/multipage.Rmd" class="external-link"><code>vignettes/multipage.Rmd</code></a></small>
       <div class="d-none name"><code>multipage.Rmd</code></div>
     </div>
 
@@ -101,20 +105,20 @@ analysis:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="../reference/used_there.html">used_there</a></span><span class="op">(</span><span class="st">"https://www.quantumjitter.com/project/"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,895 × 4</span></span></span>
-<span><span class="co">#&gt;    Package Function     n url                                          </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> base    append       1 https://www.quantumjitter.com/project/saowtu/</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> base    c           10 https://www.quantumjitter.com/project/saowtu/</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> base    cumsum       2 https://www.quantumjitter.com/project/saowtu/</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> base    function     1 https://www.quantumjitter.com/project/saowtu/</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> base    if           1 https://www.quantumjitter.com/project/saowtu/</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> base    is.na        1 https://www.quantumjitter.com/project/saowtu/</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> base    library     10 https://www.quantumjitter.com/project/saowtu/</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> base    mean         2 https://www.quantumjitter.com/project/saowtu/</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> base    readRDS      1 https://www.quantumjitter.com/project/saowtu/</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> base    return       1 https://www.quantumjitter.com/project/saowtu/</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,885 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,899 × 4</span></span></span>
+<span><span class="co">#&gt;    Package    Function                n url                                     </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> base       c                       1 https://www.quantumjitter.com/project/g…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> base       factor                  1 https://www.quantumjitter.com/project/g…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> base       library                 7 https://www.quantumjitter.com/project/g…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> base       mean                    2 https://www.quantumjitter.com/project/g…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> base       seq                     1 https://www.quantumjitter.com/project/g…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> base       seq_len                 1 https://www.quantumjitter.com/project/g…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> base       set.seed                1 https://www.quantumjitter.com/project/g…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> base       sprintf                 1 https://www.quantumjitter.com/project/g…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> base       sqrt                    1 https://www.quantumjitter.com/project/g…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> conflicted conflict_prefer_all     1 https://www.quantumjitter.com/project/g…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,889 more rows</span></span></span></code></pre></div>
 <p><a href="https://www.quantumjitter.com/project/box/" class="external-link">Favourite
 Things</a> shows an example analysis which takes the tibble output from
 <code><a href="../reference/used_there.html">used_there()</a></code>, augments these data with a category, and
